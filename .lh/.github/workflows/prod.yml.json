@@ -1,0 +1,22 @@
+{
+    "sourceFile": ".github/workflows/prod.yml",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1676424894974,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1676424910474,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -34,6 +34,6 @@\n                   # ARGS: \"-rltgoDzvO --delete\"\r\n                   SOURCE: 'build/'\r\n                   REMOTE_HOST: 192.34.62.123\r\n                   REMOTE_USER: mantis\r\n-                  TARGET: public_html\r\n+                  TARGET: public_html/free\r\n                   EXCLUDE: '/dist/, /node_modules/'\r\n"
+                }
+            ],
+            "date": 1676424894974,
+            "name": "Commit-0",
+            "content": "name: Node - SSH deploy\r\n\r\n# Controls when the action will run.\r\non:\r\n    # Triggers the workflow on push or pull request events but only for the master branch\r\n    push:\r\n        branches: [main]\r\n    pull_request:\r\n        branches: [main]\r\n\r\njobs:\r\n    SFTP-deploy:\r\n        name: 🎉 Deploy\r\n        runs-on: ubuntu-latest\r\n\r\n        steps:\r\n            - name: 🚚 Get latest code\r\n              uses: actions/checkout@v2\r\n\r\n            - name: Use Node.js 16\r\n              uses: actions/setup-node@v2-beta\r\n              with:\r\n                  node-version: '16'\r\n\r\n            - name: 🔨 Build Project\r\n              run: |\r\n                  yarn\r\n                  yarn build\r\n\r\n            - name: 📂 Deploy to Server\r\n              uses: easingthemes/ssh-deploy@v2.1.5\r\n              env:\r\n                  SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}\r\n                  # ARGS: \"-rltgoDzvO --delete\"\r\n                  SOURCE: 'build/'\r\n                  REMOTE_HOST: 192.34.62.123\r\n                  REMOTE_USER: mantis\r\n                  TARGET: public_html\r\n                  EXCLUDE: '/dist/, /node_modules/'\r\n"
+        }
+    ]
+}

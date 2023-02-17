@@ -1,0 +1,78 @@
+{
+    "sourceFile": "src/pages/addminmm/index.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 15,
+            "patches": [
+                {
+                    "date": 1676533281846,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1676533287993,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n const AdminDefault = () => {\r\n \r\n     return (\r\n         <Grid container rowSpacing={4.5} columnSpacing={2.75}>\r\n-            <Grid item xs={12} sx={{ mb: -2.25 }}></Grid>\r\n+            <Grid item xs={12} sx={{ mb: -2.25 }}>ssss</Grid>\r\n         </Grid>\r\n     );\r\n };\r\n \r\n"
+                },
+                {
+                    "date": 1676533915373,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,13 +1,12 @@\n-\r\n-\r\n // ==============================|| DASHBOARD - DEFAULT ||============================== //\r\n \r\n const AdminDefault = () => {\r\n-\r\n     return (\r\n         <Grid container rowSpacing={4.5} columnSpacing={2.75}>\r\n-            <Grid item xs={12} sx={{ mb: -2.25 }}>ssss</Grid>\r\n+            <Grid item xs={12} sx={{ mb: -2.25 }}>\r\n+                ssss\r\n+            </Grid>\r\n         </Grid>\r\n     );\r\n };\r\n \r\n"
+                },
+                {
+                    "date": 1676534045306,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,8 @@\n+import { useState } from 'react';\r\n+\r\n+\r\n+\r\n // ==============================|| DASHBOARD - DEFAULT ||============================== //\r\n \r\n const AdminDefault = () => {\r\n     return (\r\n"
+                },
+                {
+                    "date": 1676534052188,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,6 @@\n import { useState } from 'react';\r\n \r\n-\r\n-\r\n // ==============================|| DASHBOARD - DEFAULT ||============================== //\r\n \r\n const AdminDefault = () => {\r\n     return (\r\n"
+                },
+                {
+                    "date": 1676534231595,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,8 @@\n import { useState } from 'react';\r\n \r\n+\r\n+import UsersList from './UsersList';\r\n // ==============================|| DASHBOARD - DEFAULT ||============================== //\r\n \r\n const AdminDefault = () => {\r\n     return (\r\n"
+                },
+                {
+                    "date": 1676534263919,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,15 +1,22 @@\n import { useState } from 'react';\r\n \r\n-\r\n import UsersList from './UsersList';\r\n // ==============================|| DASHBOARD - DEFAULT ||============================== //\r\n \r\n const AdminDefault = () => {\r\n     return (\r\n         <Grid container rowSpacing={4.5} columnSpacing={2.75}>\r\n             <Grid item xs={12} sx={{ mb: -2.25 }}>\r\n-                ssss\r\n+                <Grid container alignItems=\"center\" justifyContent=\"space-between\">\r\n+                    <Grid item>\r\n+                        <Typography variant=\"h5\">Recent Orders</Typography>\r\n+                    </Grid>\r\n+                    <Grid item />\r\n+                </Grid>\r\n+                <MainCard sx={{ mt: 2 }} content={false}>\r\n+                    <UsersList />\r\n+                </MainCard>\r\n             </Grid>\r\n         </Grid>\r\n     );\r\n };\r\n"
+                },
+                {
+                    "date": 1676534306012,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,21 @@\n import { useState } from 'react';\r\n-\r\n+import {\r\n+    Avatar,\r\n+    AvatarGroup,\r\n+    Box,\r\n+    Button,\r\n+    Grid,\r\n+    List,\r\n+    ListItemAvatar,\r\n+    ListItemButton,\r\n+    ListItemSecondaryAction,\r\n+    ListItemText,\r\n+    MenuItem,\r\n+    Stack,\r\n+    TextField,\r\n+    Typography\r\n+} from '@mui/material';\r\n import UsersList from './UsersList';\r\n // ==============================|| DASHBOARD - DEFAULT ||============================== //\r\n \r\n const AdminDefault = () => {\r\n"
+                },
+                {
+                    "date": 1676534334660,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,8 +15,10 @@\n     TextField,\r\n     Typography\r\n } from '@mui/material';\r\n import UsersList from './UsersList';\r\n+// project import\r\n+import MainCard from 'components/MainCard';\r\n // ==============================|| DASHBOARD - DEFAULT ||============================== //\r\n \r\n const AdminDefault = () => {\r\n     return (\r\n"
+                },
+                {
+                    "date": 1676534591327,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,14 +23,8 @@\n const AdminDefault = () => {\r\n     return (\r\n         <Grid container rowSpacing={4.5} columnSpacing={2.75}>\r\n             <Grid item xs={12} sx={{ mb: -2.25 }}>\r\n-                <Grid container alignItems=\"center\" justifyContent=\"space-between\">\r\n-                    <Grid item>\r\n-                        <Typography variant=\"h5\">Recent Orders</Typography>\r\n-                    </Grid>\r\n-                    <Grid item />\r\n-                </Grid>\r\n                 <MainCard sx={{ mt: 2 }} content={false}>\r\n                     <UsersList />\r\n                 </MainCard>\r\n             </Grid>\r\n"
+                },
+                {
+                    "date": 1676607388704,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,9 +24,9 @@\n     return (\r\n         <Grid container rowSpacing={4.5} columnSpacing={2.75}>\r\n             <Grid item xs={12} sx={{ mb: -2.25 }}>\r\n                 <MainCard sx={{ mt: 2 }} content={false}>\r\n-                    <UsersList />\r\n+                    sssss\r\n                 </MainCard>\r\n             </Grid>\r\n         </Grid>\r\n     );\r\n"
+                },
+                {
+                    "date": 1676607399971,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,9 +24,9 @@\n     return (\r\n         <Grid container rowSpacing={4.5} columnSpacing={2.75}>\r\n             <Grid item xs={12} sx={{ mb: -2.25 }}>\r\n                 <MainCard sx={{ mt: 2 }} content={false}>\r\n-                    sssss\r\n+                    <UsersList />\r\n                 </MainCard>\r\n             </Grid>\r\n         </Grid>\r\n     );\r\n"
+                },
+                {
+                    "date": 1676607502575,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,8 +15,10 @@\n     TextField,\r\n     Typography\r\n } from '@mui/material';\r\n import UsersList from './UsersList';\r\n+import UserHistory from './UserHistory';\r\n+\r\n // project import\r\n import MainCard from 'components/MainCard';\r\n // ==============================|| DASHBOARD - DEFAULT ||============================== //\r\n \r\n"
+                },
+                {
+                    "date": 1676607508447,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,8 +27,9 @@\n         <Grid container rowSpacing={4.5} columnSpacing={2.75}>\r\n             <Grid item xs={12} sx={{ mb: -2.25 }}>\r\n                 <MainCard sx={{ mt: 2 }} content={false}>\r\n                     <UsersList />\r\n+                    <UserHistory />\r\n                 </MainCard>\r\n             </Grid>\r\n         </Grid>\r\n     );\r\n"
+                },
+                {
+                    "date": 1676607590298,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,8 @@\n     TextField,\r\n     Typography\r\n } from '@mui/material';\r\n import UsersList from './UsersList';\r\n-import UserHistory from './UserHistory';\r\n \r\n // project import\r\n import MainCard from 'components/MainCard';\r\n // ==============================|| DASHBOARD - DEFAULT ||============================== //\r\n@@ -27,9 +26,8 @@\n         <Grid container rowSpacing={4.5} columnSpacing={2.75}>\r\n             <Grid item xs={12} sx={{ mb: -2.25 }}>\r\n                 <MainCard sx={{ mt: 2 }} content={false}>\r\n                     <UsersList />\r\n-                    <UserHistory />\r\n                 </MainCard>\r\n             </Grid>\r\n         </Grid>\r\n     );\r\n"
+                },
+                {
+                    "date": 1676608998868,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,8 +24,11 @@\n const AdminDefault = () => {\r\n     return (\r\n         <Grid container rowSpacing={4.5} columnSpacing={2.75}>\r\n             <Grid item xs={12} sx={{ mb: -2.25 }}>\r\n+                <Typography variant=\"h5\">Users Management</Typography>\r\n+            </Grid>\r\n+            <Grid item xs={12} sx={{ mb: -2.25 }}>\r\n                 <MainCard sx={{ mt: 2 }} content={false}>\r\n                     <UsersList />\r\n                 </MainCard>\r\n             </Grid>\r\n"
+                }
+            ],
+            "date": 1676533281846,
+            "name": "Commit-0",
+            "content": "\r\n\r\n// ==============================|| DASHBOARD - DEFAULT ||============================== //\r\n\r\nconst AdminDefault = () => {\r\n\r\n    return (\r\n        <Grid container rowSpacing={4.5} columnSpacing={2.75}>\r\n            <Grid item xs={12} sx={{ mb: -2.25 }}></Grid>\r\n        </Grid>\r\n    );\r\n};\r\n\r\nexport default AdminDefault;\r\n"
+        }
+    ]
+}

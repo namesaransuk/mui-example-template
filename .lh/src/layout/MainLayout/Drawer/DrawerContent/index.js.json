@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/layout/MainLayout/Drawer/DrawerContent/index.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1676391381411,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1676391381411,
+            "name": "Commit-0",
+            "content": "// project import\r\nimport NavCard from './NavCard';\r\nimport Navigation from './Navigation';\r\nimport SimpleBar from 'components/third-party/SimpleBar';\r\n\r\n// ==============================|| DRAWER CONTENT ||============================== //\r\n\r\nconst DrawerContent = () => (\r\n    <SimpleBar\r\n        sx={{\r\n            '& .simplebar-content': {\r\n                display: 'flex',\r\n                flexDirection: 'column'\r\n            }\r\n        }}\r\n    >\r\n        <Navigation />\r\n        {/* <NavCard /> */}\r\n    </SimpleBar>\r\n);\r\n\r\nexport default DrawerContent;\r\n"
+        }
+    ]
+}

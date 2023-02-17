@@ -1,0 +1,22 @@
+{
+    "sourceFile": "src/index.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1676384709396,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1676608054587,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,8 +24,9 @@\n     <StrictMode>\r\n         <ReduxProvider store={store}>\r\n             <BrowserRouter basename=\"/\">\r\n                 <App />\r\n+                \r\n             </BrowserRouter>\r\n         </ReduxProvider>\r\n     </StrictMode>\r\n );\r\n"
+                }
+            ],
+            "date": 1676384709396,
+            "name": "Commit-0",
+            "content": "import { StrictMode } from 'react';\r\nimport { createRoot } from 'react-dom/client';\r\nimport { BrowserRouter } from 'react-router-dom';\r\n\r\n// scroll bar\r\nimport 'simplebar/src/simplebar.css';\r\n\r\n// third-party\r\nimport { Provider as ReduxProvider } from 'react-redux';\r\n\r\n// apex-chart\r\nimport 'assets/third-party/apex-chart.css';\r\n\r\n// project import\r\nimport App from './App';\r\nimport { store } from 'store';\r\nimport reportWebVitals from './reportWebVitals';\r\n\r\n// ==============================|| MAIN - REACT DOM RENDER  ||============================== //\r\n\r\nconst container = document.getElementById('root');\r\nconst root = createRoot(container); // createRoot(container!) if you use TypeScript\r\nroot.render(\r\n    <StrictMode>\r\n        <ReduxProvider store={store}>\r\n            <BrowserRouter basename=\"/\">\r\n                <App />\r\n            </BrowserRouter>\r\n        </ReduxProvider>\r\n    </StrictMode>\r\n);\r\n\r\n// If you want to start measuring performance in your app, pass a function\r\n// to log results (for example: reportWebVitals(console.log))\r\n// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals\r\nreportWebVitals();\r\n"
+        }
+    ]
+}

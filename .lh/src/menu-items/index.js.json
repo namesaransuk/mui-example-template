@@ -1,0 +1,62 @@
+{
+    "sourceFile": "src/menu-items/index.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 11,
+            "patches": [
+                {
+                    "date": 1676446932851,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1676446967515,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,8 +7,17 @@\n // ==============================|| MENU ITEMS ||============================== //\r\n \r\n const user = JSON.parse(localStorage.getItem('user'));\r\n \r\n+if (user) {\r\n+    switch (user.rolesId) {\r\n+        case 1:\r\n+            break;\r\n+        default:\r\n+            break;\r\n+    }\r\n+}\r\n+\r\n const menuItems = {\r\n     items: [dashboard, pages, utilities, support]\r\n };\r\n \r\n"
+                },
+                {
+                    "date": 1676446992183,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,19 +6,23 @@\n \r\n // ==============================|| MENU ITEMS ||============================== //\r\n \r\n const user = JSON.parse(localStorage.getItem('user'));\r\n-\r\n+const menuItems = null;\r\n if (user) {\r\n     switch (user.rolesId) {\r\n         case 1:\r\n+            menuItems = {\r\n+                items: [dashboard, pages, support]\r\n+            };\r\n+\r\n             break;\r\n         default:\r\n+            menuItems = {\r\n+                items: [dashboard, pages, utilities, support]\r\n+            };\r\n+\r\n             break;\r\n     }\r\n }\r\n \r\n-const menuItems = {\r\n-    items: [dashboard, pages, utilities, support]\r\n-};\r\n-\r\n export default menuItems;\r\n"
+                },
+                {
+                    "date": 1676446999237,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,15 +11,15 @@\n if (user) {\r\n     switch (user.rolesId) {\r\n         case 1:\r\n             menuItems = {\r\n-                items: [dashboard, pages, support]\r\n+                items: [dashboard, pages, utilities, support]\r\n             };\r\n \r\n             break;\r\n         default:\r\n             menuItems = {\r\n-                items: [dashboard, pages, utilities, support]\r\n+                items: [dashboard, pages, support]\r\n             };\r\n \r\n             break;\r\n     }\r\n"
+                },
+                {
+                    "date": 1676447027421,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n \r\n // ==============================|| MENU ITEMS ||============================== //\r\n \r\n const user = JSON.parse(localStorage.getItem('user'));\r\n-const menuItems = null;\r\n+let menuItems = null;\r\n if (user) {\r\n     switch (user.rolesId) {\r\n         case 1:\r\n             menuItems = {\r\n"
+                },
+                {
+                    "date": 1676447347038,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n import pages from './pages';\r\n import dashboard from './dashboard';\r\n import utilities from './utilities';\r\n import support from './support';\r\n-\r\n+import adminmm from './adminmm';\r\n // ==============================|| MENU ITEMS ||============================== //\r\n \r\n const user = JSON.parse(localStorage.getItem('user'));\r\n let menuItems = null;\r\n"
+                },
+                {
+                    "date": 1676447352414,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,9 @@\n if (user) {\r\n     switch (user.rolesId) {\r\n         case 1:\r\n             menuItems = {\r\n-                items: [dashboard, pages, utilities, support]\r\n+                items: [adminmm, dashboard, pages, utilities, support]\r\n             };\r\n \r\n             break;\r\n         default:\r\n"
+                },
+                {
+                    "date": 1676531281379,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,9 @@\n if (user) {\r\n     switch (user.rolesId) {\r\n         case 1:\r\n             menuItems = {\r\n-                items: [adminmm, dashboard, pages, utilities, support]\r\n+                items: [dashboard, pages, utilities, support]\r\n             };\r\n \r\n             break;\r\n         default:\r\n"
+                },
+                {
+                    "date": 1676531305041,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,9 @@\n if (user) {\r\n     switch (user.rolesId) {\r\n         case 1:\r\n             menuItems = {\r\n-                items: [dashboard, pages, utilities, support]\r\n+                items: [adminmm, dashboard, pages, utilities, support]\r\n             };\r\n \r\n             break;\r\n         default:\r\n"
+                },
+                {
+                    "date": 1676608305179,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,8 +3,10 @@\n import dashboard from './dashboard';\r\n import utilities from './utilities';\r\n import support from './support';\r\n import adminmm from './adminmm';\r\n+import ordermain from './ordermain';\r\n+\r\n // ==============================|| MENU ITEMS ||============================== //\r\n \r\n const user = JSON.parse(localStorage.getItem('user'));\r\n let menuItems = null;\r\n"
+                },
+                {
+                    "date": 1676608317487,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n if (user) {\r\n     switch (user.rolesId) {\r\n         case 1:\r\n             menuItems = {\r\n-                items: [adminmm, dashboard, pages, utilities, support]\r\n+                items: [ordermain, adminmm, dashboard, pages, utilities, support]\r\n             };\r\n \r\n             break;\r\n         default:\r\n"
+                },
+                {
+                    "date": 1676608344985,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,8 @@\n import dashboard from './dashboard';\r\n import utilities from './utilities';\r\n import support from './support';\r\n import adminmm from './adminmm';\r\n-import ordermain from './ordermain';\r\n \r\n // ==============================|| MENU ITEMS ||============================== //\r\n \r\n const user = JSON.parse(localStorage.getItem('user'));\r\n@@ -13,9 +12,9 @@\n if (user) {\r\n     switch (user.rolesId) {\r\n         case 1:\r\n             menuItems = {\r\n-                items: [ordermain, adminmm, dashboard, pages, utilities, support]\r\n+                items: [adminmm, dashboard, pages, utilities, support]\r\n             };\r\n \r\n             break;\r\n         default:\r\n"
+                }
+            ],
+            "date": 1676446932851,
+            "name": "Commit-0",
+            "content": "// project import\r\nimport pages from './pages';\r\nimport dashboard from './dashboard';\r\nimport utilities from './utilities';\r\nimport support from './support';\r\n\r\n// ==============================|| MENU ITEMS ||============================== //\r\n\r\nconst user = JSON.parse(localStorage.getItem('user'));\r\n\r\nconst menuItems = {\r\n    items: [dashboard, pages, utilities, support]\r\n};\r\n\r\nexport default menuItems;\r\n"
+        }
+    ]
+}

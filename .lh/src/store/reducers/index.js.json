@@ -1,0 +1,26 @@
+{
+    "sourceFile": "src/store/reducers/index.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1676390828778,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1676390846962,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,7 +5,7 @@\n import menu from './menu';\r\n import counters from './counters';\r\n // ==============================|| COMBINE REDUCERS ||============================== //\r\n \r\n-const reducers = combineReducers({ menu,counters });\r\n+const reducers = combineReducers({ menu, counters });\r\n \r\n export default reducers;\r\n"
+                },
+                {
+                    "date": 1676391241548,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,10 +2,10 @@\n import { combineReducers } from 'redux';\r\n \r\n // project import\r\n import menu from './menu';\r\n-import counters from './counters';\r\n+\r\n // ==============================|| COMBINE REDUCERS ||============================== //\r\n \r\n-const reducers = combineReducers({ menu, counters });\r\n+const reducers = combineReducers({ menu });\r\n \r\n export default reducers;\r\n"
+                }
+            ],
+            "date": 1676390828778,
+            "name": "Commit-0",
+            "content": "// third-party\r\nimport { combineReducers } from 'redux';\r\n\r\n// project import\r\nimport menu from './menu';\r\nimport counters from './counters';\r\n// ==============================|| COMBINE REDUCERS ||============================== //\r\n\r\nconst reducers = combineReducers({ menu,counters });\r\n\r\nexport default reducers;\r\n"
+        }
+    ]
+}

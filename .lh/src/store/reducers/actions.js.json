@@ -1,0 +1,22 @@
+{
+    "sourceFile": "src/store/reducers/actions.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1676390885374,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1676391237067,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,15 +1,4 @@\n // action - account reducer\r\n export const LOGIN = '@auth/LOGIN';\r\n export const LOGOUT = '@auth/LOGOUT';\r\n export const REGISTER = '@auth/REGISTER';\r\n-\r\n-\r\n-export const increment = (score = 1) => ({\r\n-    type: 'INCREMENT',\r\n-    score\r\n-  });\r\n-  \r\n-  export const decrement = (score = -1) => ({\r\n-    type: 'DECREMENT',\r\n-    score\r\n-  });\r\n"
+                }
+            ],
+            "date": 1676390885374,
+            "name": "Commit-0",
+            "content": "// action - account reducer\r\nexport const LOGIN = '@auth/LOGIN';\r\nexport const LOGOUT = '@auth/LOGOUT';\r\nexport const REGISTER = '@auth/REGISTER';\r\n\r\n\r\nexport const increment = (score = 1) => ({\r\n    type: 'INCREMENT',\r\n    score\r\n  });\r\n  \r\n  export const decrement = (score = -1) => ({\r\n    type: 'DECREMENT',\r\n    score\r\n  });\r\n"
+        }
+    ]
+}

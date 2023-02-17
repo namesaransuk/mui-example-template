@@ -1,0 +1,26 @@
+{
+    "sourceFile": "src/menu-items/support.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1676531366433,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1676531465017,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n // assets\r\n-import { ChromeOutlined, QuestionOutlined } from '@ant-design/icons';\r\n+import { ChromeOutlined, QuestionOutlined, UserOutlined } from '@ant-design/icons';\r\n \r\n // icons\r\n const icons = {\r\n     ChromeOutlined,\r\n@@ -18,9 +18,9 @@\n             id: 'edit-profile',\r\n             title: 'Edit Profile',\r\n             type: 'item',\r\n             url: '/EditProfile',\r\n-            icon: icons.UnorderedListOutlined\r\n+            icon: icons.UserOutlined\r\n         },\r\n         {\r\n             id: 'sample-page',\r\n             title: 'Sample Page',\r\n"
+                },
+                {
+                    "date": 1676531480720,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,10 @@\n \r\n // icons\r\n const icons = {\r\n     ChromeOutlined,\r\n-    QuestionOutlined\r\n+    QuestionOutlined,\r\n+    UserOutlined\r\n };\r\n \r\n // ==============================|| MENU ITEMS - SAMPLE PAGE & DOCUMENTATION ||============================== //\r\n \r\n"
+                }
+            ],
+            "date": 1676531366433,
+            "name": "Commit-0",
+            "content": "// assets\r\nimport { ChromeOutlined, QuestionOutlined } from '@ant-design/icons';\r\n\r\n// icons\r\nconst icons = {\r\n    ChromeOutlined,\r\n    QuestionOutlined\r\n};\r\n\r\n// ==============================|| MENU ITEMS - SAMPLE PAGE & DOCUMENTATION ||============================== //\r\n\r\nconst support = {\r\n    id: 'support',\r\n    title: 'Support',\r\n    type: 'group',\r\n    children: [\r\n        {\r\n            id: 'edit-profile',\r\n            title: 'Edit Profile',\r\n            type: 'item',\r\n            url: '/EditProfile',\r\n            icon: icons.UnorderedListOutlined\r\n        },\r\n        {\r\n            id: 'sample-page',\r\n            title: 'Sample Page',\r\n            type: 'item',\r\n            url: '/sample-page',\r\n            icon: icons.ChromeOutlined\r\n        },\r\n        {\r\n            id: 'documentation',\r\n            title: 'Documentation',\r\n            type: 'item',\r\n            url: 'https://codedthemes.gitbook.io/mantis-react/',\r\n            icon: icons.QuestionOutlined,\r\n            external: true,\r\n            target: true\r\n        }\r\n    ]\r\n};\r\n\r\nexport default support;\r\n"
+        }
+    ]
+}

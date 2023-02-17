@@ -1,0 +1,94 @@
+{
+    "sourceFile": "src/routes/LoginRoutes.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 19,
+            "patches": [
+                {
+                    "date": 1676378966221,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1676378986062,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,13 +9,8 @@\n const AuthRegister = Loadable(lazy(() => import('pages/authentication/Register')));\r\n \r\n // ==============================|| AUTH ROUTING ||============================== //\r\n \r\n-\r\n-\r\n-\r\n-\r\n-\r\n const LoginRoutes = {\r\n     path: '/',\r\n     element: <MinimalLayout />,\r\n     children: [\r\n"
+                },
+                {
+                    "date": 1676379440522,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,8 +8,9 @@\n const AuthLogin = Loadable(lazy(() => import('pages/authentication/Login')));\r\n const AuthRegister = Loadable(lazy(() => import('pages/authentication/Register')));\r\n \r\n // ==============================|| AUTH ROUTING ||============================== //\r\n+const token = localStorage.getItem('accessToken');\r\n \r\n const LoginRoutes = {\r\n     path: '/',\r\n     element: <MinimalLayout />,\r\n"
+                },
+                {
+                    "date": 1676379798851,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n const token = localStorage.getItem('accessToken');\r\n \r\n const LoginRoutes = {\r\n     path: '/',\r\n-    element: <MinimalLayout />,\r\n+    element: token?<MinimalLayout />:<AuthLogin />,\r\n     children: [\r\n         {\r\n             path: 'login',\r\n             element: <AuthLogin />\r\n"
+                },
+                {
+                    "date": 1676379891192,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,11 +10,28 @@\n \r\n // ==============================|| AUTH ROUTING ||============================== //\r\n const token = localStorage.getItem('accessToken');\r\n \r\n+if (!token) {\r\n+    const LoginRoutes = {\r\n+        path: '/',\r\n+        element: <AuthLogin />,\r\n+        children: [\r\n+            {\r\n+                path: 'login',\r\n+                element: <AuthLogin />\r\n+            },\r\n+            {\r\n+                path: 'register',\r\n+                element: <AuthRegister />\r\n+            }\r\n+        ]\r\n+    };\r\n+}\r\n+\r\n const LoginRoutes = {\r\n     path: '/',\r\n-    element: token?<MinimalLayout />:<AuthLogin />,\r\n+    element: <MinimalLayout />,\r\n     children: [\r\n         {\r\n             path: 'login',\r\n             element: <AuthLogin />\r\n"
+                },
+                {
+                    "date": 1676379923441,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n \r\n if (!token) {\r\n     const LoginRoutes = {\r\n         path: '/',\r\n-        element: <AuthLogin />,\r\n+        element: <MinimalLayout />,\r\n         children: [\r\n             {\r\n                 path: 'login',\r\n                 element: <AuthLogin />\r\n"
+                },
+                {
+                    "date": 1676379940779,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,22 +25,24 @@\n                 element: <AuthRegister />\r\n             }\r\n         ]\r\n     };\r\n+}else{\r\n+    const LoginRoutes = {\r\n+        path: '/',\r\n+        element: <AuthLogin />,\r\n+        children: [\r\n+            {\r\n+                path: 'login',\r\n+                element: <AuthLogin />\r\n+            },\r\n+            {\r\n+                path: 'register',\r\n+                element: <AuthRegister />\r\n+            }\r\n+        ]\r\n+    };\r\n }\r\n \r\n-const LoginRoutes = {\r\n-    path: '/',\r\n-    element: <MinimalLayout />,\r\n-    children: [\r\n-        {\r\n-            path: 'login',\r\n-            element: <AuthLogin />\r\n-        },\r\n-        {\r\n-            path: 'register',\r\n-            element: <AuthRegister />\r\n-        }\r\n-    ]\r\n-};\r\n \r\n+\r\n export default LoginRoutes;\r\n"
+                },
+                {
+                    "date": 1676379948707,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,9 +25,9 @@\n                 element: <AuthRegister />\r\n             }\r\n         ]\r\n     };\r\n-}else{\r\n+} else {\r\n     const LoginRoutes = {\r\n         path: '/',\r\n         element: <AuthLogin />,\r\n         children: [\r\n@@ -42,7 +42,5 @@\n         ]\r\n     };\r\n }\r\n \r\n-\r\n-\r\n export default LoginRoutes;\r\n"
+                },
+                {
+                    "date": 1676379968958,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,10 +10,12 @@\n \r\n // ==============================|| AUTH ROUTING ||============================== //\r\n const token = localStorage.getItem('accessToken');\r\n \r\n+const LoginRoutes = null;\r\n+\r\n if (!token) {\r\n-    const LoginRoutes = {\r\n+    LoginRoutes = {\r\n         path: '/',\r\n         element: <MinimalLayout />,\r\n         children: [\r\n             {\r\n@@ -26,9 +28,9 @@\n             }\r\n         ]\r\n     };\r\n } else {\r\n-    const LoginRoutes = {\r\n+    LoginRoutes = {\r\n         path: '/',\r\n         element: <AuthLogin />,\r\n         children: [\r\n             {\r\n"
+                },
+                {
+                    "date": 1676379976286,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n const token = localStorage.getItem('accessToken');\r\n \r\n const LoginRoutes = null;\r\n \r\n-if (!token) {\r\n+if (token) {\r\n     LoginRoutes = {\r\n         path: '/',\r\n         element: <MinimalLayout />,\r\n         children: [\r\n"
+                },
+                {
+                    "date": 1676379998541,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,39 +10,20 @@\n \r\n // ==============================|| AUTH ROUTING ||============================== //\r\n const token = localStorage.getItem('accessToken');\r\n \r\n-const LoginRoutes = null;\r\n+const LoginRoutes = {\r\n+    path: '/',\r\n+    element: <MinimalLayout />,\r\n+    children: [\r\n+        {\r\n+            path: 'login',\r\n+            element: <AuthLogin />\r\n+        },\r\n+        {\r\n+            path: 'register',\r\n+            element: <AuthRegister />\r\n+        }\r\n+    ]\r\n+};\r\n \r\n-if (token) {\r\n-    LoginRoutes = {\r\n-        path: '/',\r\n-        element: <MinimalLayout />,\r\n-        children: [\r\n-            {\r\n-                path: 'login',\r\n-                element: <AuthLogin />\r\n-            },\r\n-            {\r\n-                path: 'register',\r\n-                element: <AuthRegister />\r\n-            }\r\n-        ]\r\n-    };\r\n-} else {\r\n-    LoginRoutes = {\r\n-        path: '/',\r\n-        element: <AuthLogin />,\r\n-        children: [\r\n-            {\r\n-                path: 'login',\r\n-                element: <AuthLogin />\r\n-            },\r\n-            {\r\n-                path: 'register',\r\n-                element: <AuthRegister />\r\n-            }\r\n-        ]\r\n-    };\r\n-}\r\n-\r\n export default LoginRoutes;\r\n"
+                },
+                {
+                    "date": 1676384053106,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,8 @@\n const AuthLogin = Loadable(lazy(() => import('pages/authentication/Login')));\r\n const AuthRegister = Loadable(lazy(() => import('pages/authentication/Register')));\r\n \r\n // ==============================|| AUTH ROUTING ||============================== //\r\n-const token = localStorage.getItem('accessToken');\r\n \r\n const LoginRoutes = {\r\n     path: '/',\r\n     element: <MinimalLayout />,\r\n"
+                },
+                {
+                    "date": 1676390010193,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,8 +20,12 @@\n         },\r\n         {\r\n             path: 'register',\r\n             element: <AuthRegister />\r\n+        },\r\n+        {\r\n+            path: 'textRedux',\r\n+            element: <AuthRegister />\r\n         }\r\n     ]\r\n };\r\n \r\n"
+                },
+                {
+                    "date": 1676390044798,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,8 +7,10 @@\n // render - login\r\n const AuthLogin = Loadable(lazy(() => import('pages/authentication/Login')));\r\n const AuthRegister = Loadable(lazy(() => import('pages/authentication/Register')));\r\n \r\n+const AuthTestRedux = Loadable(lazy(() => import('pages/authentication/Register')));\r\n+\r\n // ==============================|| AUTH ROUTING ||============================== //\r\n \r\n const LoginRoutes = {\r\n     path: '/',\r\n@@ -23,9 +25,9 @@\n             element: <AuthRegister />\r\n         },\r\n         {\r\n             path: 'textRedux',\r\n-            element: <AuthRegister />\r\n+            element: <AuthTestRedux />\r\n         }\r\n     ]\r\n };\r\n \r\n"
+                },
+                {
+                    "date": 1676390386379,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n // render - login\r\n const AuthLogin = Loadable(lazy(() => import('pages/authentication/Login')));\r\n const AuthRegister = Loadable(lazy(() => import('pages/authentication/Register')));\r\n \r\n-const AuthTestRedux = Loadable(lazy(() => import('pages/authentication/Register')));\r\n+const AuthTestRedux = Loadable(lazy(() => import('pages/authentication/TestRedux')));\r\n \r\n // ==============================|| AUTH ROUTING ||============================== //\r\n \r\n const LoginRoutes = {\r\n"
+                },
+                {
+                    "date": 1676391257843,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,10 +7,8 @@\n // render - login\r\n const AuthLogin = Loadable(lazy(() => import('pages/authentication/Login')));\r\n const AuthRegister = Loadable(lazy(() => import('pages/authentication/Register')));\r\n \r\n-const AuthTestRedux = Loadable(lazy(() => import('pages/authentication/TestRedux')));\r\n-\r\n // ==============================|| AUTH ROUTING ||============================== //\r\n \r\n const LoginRoutes = {\r\n     path: '/',\r\n@@ -22,12 +20,8 @@\n         },\r\n         {\r\n             path: 'register',\r\n             element: <AuthRegister />\r\n-        },\r\n-        {\r\n-            path: 'textRedux',\r\n-            element: <AuthTestRedux />\r\n         }\r\n     ]\r\n };\r\n \r\n"
+                },
+                {
+                    "date": 1676391464451,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,12 +16,8 @@\n     children: [\r\n         {\r\n             path: 'login',\r\n             element: <AuthLogin />\r\n-        },\r\n-        {\r\n-            path: 'register',\r\n-            element: <AuthRegister />\r\n         }\r\n     ]\r\n };\r\n \r\n"
+                },
+                {
+                    "date": 1676391476192,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,8 +16,12 @@\n     children: [\r\n         {\r\n             path: 'login',\r\n             element: <AuthLogin />\r\n+        },\r\n+        {\r\n+            path: 'register',\r\n+            element: <AuthRegister />\r\n         }\r\n     ]\r\n };\r\n \r\n"
+                },
+                {
+                    "date": 1676393557446,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,9 @@\n // ==============================|| AUTH ROUTING ||============================== //\r\n \r\n const LoginRoutes = {\r\n     path: '/',\r\n-    element: <MinimalLayout />,\r\n+    element: <AuthLogin />,\r\n     children: [\r\n         {\r\n             path: 'login',\r\n             element: <AuthLogin />\r\n"
+                },
+                {
+                    "date": 1676393636506,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,9 @@\n // ==============================|| AUTH ROUTING ||============================== //\r\n \r\n const LoginRoutes = {\r\n     path: '/',\r\n-    element: <AuthLogin />,\r\n+    element: <MinimalLayout />,\r\n     children: [\r\n         {\r\n             path: 'login',\r\n             element: <AuthLogin />\r\n"
+                }
+            ],
+            "date": 1676378966221,
+            "name": "Commit-0",
+            "content": "import { lazy } from 'react';\r\n\r\n// project import\r\nimport Loadable from 'components/Loadable';\r\nimport MinimalLayout from 'layout/MinimalLayout';\r\n\r\n// render - login\r\nconst AuthLogin = Loadable(lazy(() => import('pages/authentication/Login')));\r\nconst AuthRegister = Loadable(lazy(() => import('pages/authentication/Register')));\r\n\r\n// ==============================|| AUTH ROUTING ||============================== //\r\n\r\n\r\n\r\n\r\n\r\n\r\nconst LoginRoutes = {\r\n    path: '/',\r\n    element: <MinimalLayout />,\r\n    children: [\r\n        {\r\n            path: 'login',\r\n            element: <AuthLogin />\r\n        },\r\n        {\r\n            path: 'register',\r\n            element: <AuthRegister />\r\n        }\r\n    ]\r\n};\r\n\r\nexport default LoginRoutes;\r\n"
+        }
+    ]
+}

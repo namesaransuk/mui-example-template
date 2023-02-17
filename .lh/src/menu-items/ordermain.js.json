@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/menu-items/ordermain.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1676608264998,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1676608264998,
+            "name": "Commit-0",
+            "content": "// assets\r\nimport { UnorderedListOutlined } from '@ant-design/icons';\r\n\r\n// icons\r\nconst icons = {\r\n    UnorderedListOutlined\r\n};\r\n\r\n// ==============================|| MENU ITEMS - UTILITIES ||============================== //\r\n\r\nconst ordermain = {\r\n    id: 'ordermain',\r\n    title: 'Order',\r\n    type: 'group',\r\n    children: [\r\n        {\r\n            id: 'order-main',\r\n            title: 'Order Main',\r\n            type: 'item',\r\n            url: '/Order',\r\n            icon: icons.UnorderedListOutlined\r\n        }\r\n    ]\r\n};\r\n\r\nexport default ordermain;\r\n"
+        }
+    ]
+}

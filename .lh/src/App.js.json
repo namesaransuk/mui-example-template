@@ -1,0 +1,26 @@
+{
+    "sourceFile": "src/App.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1676435158636,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1676435174329,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,16 @@\n+// project import\r\n+import Routes from 'routes';\r\n+import ThemeCustomization from 'themes';\r\n+import ScrollTop from 'components/ScrollTop';\r\n+\r\n+// ==============================|| APP - THEME, ROUTER, LOCAL  ||============================== //\r\n+\r\n+const App = () => (\r\n+    <ThemeCustomization>\r\n+        <ScrollTop>\r\n+            <Routes />\r\n+        </ScrollTop>\r\n+    </ThemeCustomization>\r\n+);\r\n+\r\n+export default App;\r\n"
+                },
+                {
+                    "date": 1676435192921,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,14 @@\n+// project import\r\n+import Routes from 'routes';\r\n+import ThemeCustomization from 'themes';\r\n+import ScrollTop from 'components/ScrollTop';\r\n+\r\n+// ==============================|| APP - THEME, ROUTER, LOCAL  ||============================== //\r\n+\r\n+const App = () => (\r\n+    <ThemeCustomization>\r\n+        <ScrollTop></ScrollTop>\r\n+    </ThemeCustomization>\r\n+);\r\n+\r\n+export default App;\r\n"
+                }
+            ],
+            "date": 1676435158636,
+            "name": "Commit-0",
+            "content": "// project import\r\nimport Routes from 'routes';\r\nimport ThemeCustomization from 'themes';\r\nimport ScrollTop from 'components/ScrollTop';\r\n\r\n// ==============================|| APP - THEME, ROUTER, LOCAL  ||============================== //\r\n\r\nconst App = () => (\r\n    <ThemeCustomization>\r\n        <ScrollTop>\r\n            \r\n        </ScrollTop>\r\n    </ThemeCustomization>\r\n);\r\n\r\nexport default App;\r\n"
+        }
+    ]
+}

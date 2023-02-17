@@ -1,0 +1,94 @@
+{
+    "sourceFile": "src/routes/index.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 19,
+            "patches": [
+                {
+                    "date": 1676379020927,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1676380446238,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,6 +6,8 @@\n \r\n // ==============================|| ROUTING RENDER ||============================== //\r\n \r\n export default function ThemeRoutes() {\r\n+    const token = localStorage.getItem('accessToken');\r\n+\r\n     return useRoutes([MainRoutes, LoginRoutes]);\r\n }\r\n"
+                },
+                {
+                    "date": 1676380540889,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,7 +7,10 @@\n // ==============================|| ROUTING RENDER ||============================== //\r\n \r\n export default function ThemeRoutes() {\r\n     const token = localStorage.getItem('accessToken');\r\n-\r\n+    if (!token) {\r\n+        // If the token is null or undefined, redirect to the login page\r\n+        window.location.href = '/login';\r\n+    }\r\n     return useRoutes([MainRoutes, LoginRoutes]);\r\n }\r\n"
+                },
+                {
+                    "date": 1676380561657,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,8 +9,8 @@\n export default function ThemeRoutes() {\r\n     const token = localStorage.getItem('accessToken');\r\n     if (!token) {\r\n         // If the token is null or undefined, redirect to the login page\r\n-        window.location.href = '/login';\r\n+        window.location.href = '/free/login';\r\n     }\r\n     return useRoutes([MainRoutes, LoginRoutes]);\r\n }\r\n"
+                },
+                {
+                    "date": 1676380584894,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,10 +7,10 @@\n // ==============================|| ROUTING RENDER ||============================== //\r\n \r\n export default function ThemeRoutes() {\r\n     const token = localStorage.getItem('accessToken');\r\n-    if (!token) {\r\n-        // If the token is null or undefined, redirect to the login page\r\n-        window.location.href = '/free/login';\r\n-    }\r\n+    // if (!token) {\r\n+    //     // If the token is null or undefined, redirect to the login page\r\n+    //     window.location.href = '/free/login';\r\n+    // }\r\n     return useRoutes([MainRoutes, LoginRoutes]);\r\n }\r\n"
+                },
+                {
+                    "date": 1676380597806,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,10 +7,6 @@\n // ==============================|| ROUTING RENDER ||============================== //\r\n \r\n export default function ThemeRoutes() {\r\n     const token = localStorage.getItem('accessToken');\r\n-    // if (!token) {\r\n-    //     // If the token is null or undefined, redirect to the login page\r\n-    //     window.location.href = '/free/login';\r\n-    // }\r\n     return useRoutes([MainRoutes, LoginRoutes]);\r\n }\r\n"
+                },
+                {
+                    "date": 1676384050336,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,7 +6,6 @@\n \r\n // ==============================|| ROUTING RENDER ||============================== //\r\n \r\n export default function ThemeRoutes() {\r\n-    const token = localStorage.getItem('accessToken');\r\n     return useRoutes([MainRoutes, LoginRoutes]);\r\n }\r\n"
+                },
+                {
+                    "date": 1676384584522,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,6 +6,6 @@\n \r\n // ==============================|| ROUTING RENDER ||============================== //\r\n \r\n export default function ThemeRoutes() {\r\n-    return useRoutes([MainRoutes, LoginRoutes]);\r\n+    return useRoutes([MainRoutes]);\r\n }\r\n"
+                },
+                {
+                    "date": 1676384607520,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,6 +6,6 @@\n \r\n // ==============================|| ROUTING RENDER ||============================== //\r\n \r\n export default function ThemeRoutes() {\r\n-    return useRoutes([MainRoutes]);\r\n+    return useRoutes([LoginRoutes]);\r\n }\r\n"
+                },
+                {
+                    "date": 1676385488191,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,6 +6,7 @@\n \r\n // ==============================|| ROUTING RENDER ||============================== //\r\n \r\n export default function ThemeRoutes() {\r\n-    return useRoutes([LoginRoutes]);\r\n+    console.log(store.getState());\r\n+    return useRoutes([MainRoutes, LoginRoutes]);\r\n }\r\n"
+                },
+                {
+                    "date": 1676385499398,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,7 +6,6 @@\n \r\n // ==============================|| ROUTING RENDER ||============================== //\r\n \r\n export default function ThemeRoutes() {\r\n-    console.log(store.getState());\r\n     return useRoutes([MainRoutes, LoginRoutes]);\r\n }\r\n"
+                },
+                {
+                    "date": 1676393587943,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,6 +6,6 @@\n \r\n // ==============================|| ROUTING RENDER ||============================== //\r\n \r\n export default function ThemeRoutes() {\r\n-    return useRoutes([MainRoutes, LoginRoutes]);\r\n+    return useRoutes([LoginRoutes]);\r\n }\r\n"
+                },
+                {
+                    "date": 1676393621647,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,6 +6,6 @@\n \r\n // ==============================|| ROUTING RENDER ||============================== //\r\n \r\n export default function ThemeRoutes() {\r\n-    return useRoutes([LoginRoutes]);\r\n+    return useRoutes([MainRoutes, LoginRoutes]);\r\n }\r\n"
+                },
+                {
+                    "date": 1676393678580,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,6 +6,6 @@\n \r\n // ==============================|| ROUTING RENDER ||============================== //\r\n \r\n export default function ThemeRoutes() {\r\n-    return useRoutes([MainRoutes, LoginRoutes]);\r\n+    return useRoutes([LoginRoutes]);\r\n }\r\n"
+                },
+                {
+                    "date": 1676393693103,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,6 +6,6 @@\n \r\n // ==============================|| ROUTING RENDER ||============================== //\r\n \r\n export default function ThemeRoutes() {\r\n-    return useRoutes([LoginRoutes]);\r\n+    return useRoutes([MainRoutes, LoginRoutes]);\r\n }\r\n"
+                },
+                {
+                    "date": 1676436227380,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,7 +5,9 @@\n import MainRoutes from './MainRoutes';\r\n \r\n // ==============================|| ROUTING RENDER ||============================== //\r\n \r\n+console.log(MainRoutes);\r\n+\r\n export default function ThemeRoutes() {\r\n     return useRoutes([MainRoutes, LoginRoutes]);\r\n }\r\n"
+                },
+                {
+                    "date": 1676436602798,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,8 @@\n import MainRoutes from './MainRoutes';\r\n \r\n // ==============================|| ROUTING RENDER ||============================== //\r\n \r\n-console.log(MainRoutes);\r\n \r\n export default function ThemeRoutes() {\r\n     return useRoutes([MainRoutes, LoginRoutes]);\r\n }\r\n"
+                },
+                {
+                    "date": 1676436628340,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,8 +5,9 @@\n import MainRoutes from './MainRoutes';\r\n \r\n // ==============================|| ROUTING RENDER ||============================== //\r\n \r\n+console.log(MainRoutes);\r\n \r\n export default function ThemeRoutes() {\r\n     return useRoutes([MainRoutes, LoginRoutes]);\r\n }\r\n"
+                },
+                {
+                    "date": 1676437189180,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,12 @@\n import MainRoutes from './MainRoutes';\r\n \r\n // ==============================|| ROUTING RENDER ||============================== //\r\n \r\n-console.log(MainRoutes);\r\n+const filteredRoutes = MainRoutes.filter((route) =>\r\n+    route.children ? route.children.some((child) => child.role.includes(1)) : route.role.includes(1)\r\n+);\r\n+console.log(filteredRoutes);\r\n \r\n export default function ThemeRoutes() {\r\n     return useRoutes([MainRoutes, LoginRoutes]);\r\n }\r\n"
+                },
+                {
+                    "date": 1676439031581,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,12 +5,7 @@\n import MainRoutes from './MainRoutes';\r\n \r\n // ==============================|| ROUTING RENDER ||============================== //\r\n \r\n-const filteredRoutes = MainRoutes.filter((route) =>\r\n-    route.children ? route.children.some((child) => child.role.includes(1)) : route.role.includes(1)\r\n-);\r\n-console.log(filteredRoutes);\r\n-\r\n export default function ThemeRoutes() {\r\n     return useRoutes([MainRoutes, LoginRoutes]);\r\n }\r\n"
+                }
+            ],
+            "date": 1676379020927,
+            "name": "Commit-0",
+            "content": "import { useRoutes } from 'react-router-dom';\r\n\r\n// project import\r\nimport LoginRoutes from './LoginRoutes';\r\nimport MainRoutes from './MainRoutes';\r\n\r\n// ==============================|| ROUTING RENDER ||============================== //\r\n\r\nexport default function ThemeRoutes() {\r\n    return useRoutes([MainRoutes, LoginRoutes]);\r\n}\r\n"
+        }
+    ]
+}

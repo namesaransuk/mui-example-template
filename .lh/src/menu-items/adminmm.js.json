@@ -1,0 +1,70 @@
+{
+    "sourceFile": "src/menu-items/adminmm.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 13,
+            "patches": [
+                {
+                    "date": 1676447279505,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1676447320448,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,10 +1,10 @@\n // assets\r\n-import { FontSizeOutlined } from '@ant-design/icons';\r\n+import { UnorderedListOutlined } from '@ant-design/icons';\r\n \r\n // icons\r\n const icons = {\r\n-    FontSizeOutlined\r\n+    UnorderedListOutlined\r\n };\r\n \r\n // ==============================|| MENU ITEMS - UTILITIES ||============================== //\r\n \r\n@@ -17,9 +17,9 @@\n             id: 'admin-management',\r\n             title: 'Admin Management',\r\n             type: 'item',\r\n             url: '/adminManagement',\r\n-            icon: icons.FontSizeOutlined\r\n+            icon: icons.UnorderedListOutlined\r\n         }\r\n     ]\r\n };\r\n \r\n"
+                },
+                {
+                    "date": 1676447371345,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,10 +13,10 @@\n     title: 'Admin',\r\n     type: 'group',\r\n     children: [\r\n         {\r\n-            id: 'admin-management',\r\n-            title: 'Admin Management',\r\n+            id: 'user-management',\r\n+            title: 'User Management',\r\n             type: 'item',\r\n             url: '/adminManagement',\r\n             icon: icons.UnorderedListOutlined\r\n         }\r\n"
+                },
+                {
+                    "date": 1676447379191,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,12 +13,12 @@\n     title: 'Admin',\r\n     type: 'group',\r\n     children: [\r\n         {\r\n-            id: 'user-management',\r\n-            title: 'User Management',\r\n+            id: 'users-management',\r\n+            title: 'Users Management',\r\n             type: 'item',\r\n-            url: '/adminManagement',\r\n+            url: '/usersManagement',\r\n             icon: icons.UnorderedListOutlined\r\n         }\r\n     ]\r\n };\r\n"
+                },
+                {
+                    "date": 1676469950542,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,9 +16,9 @@\n         {\r\n             id: 'users-management',\r\n             title: 'Users Management',\r\n             type: 'item',\r\n-            url: '/usersManagement',\r\n+            url: '/EditProfile',\r\n             icon: icons.UnorderedListOutlined\r\n         }\r\n     ]\r\n };\r\n"
+                },
+                {
+                    "date": 1676472723413,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,9 +16,9 @@\n         {\r\n             id: 'users-management',\r\n             title: 'Users Management',\r\n             type: 'item',\r\n-            url: '/EditProfile',\r\n+            url: '/usersManagement',\r\n             icon: icons.UnorderedListOutlined\r\n         }\r\n     ]\r\n };\r\n"
+                },
+                {
+                    "date": 1676472790506,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,9 +18,17 @@\n             title: 'Users Management',\r\n             type: 'item',\r\n             url: '/usersManagement',\r\n             icon: icons.UnorderedListOutlined\r\n+        },\r\n+        {\r\n+            id: 'edit-profile',\r\n+            title: 'Edit Profile',\r\n+            type: 'item',\r\n+            url: '/EditProfile',\r\n+            icon: icons.UnorderedListOutlined\r\n         }\r\n+\r\n     ]\r\n };\r\n \r\n export default adminmm;\r\n"
+                },
+                {
+                    "date": 1676472930884,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,17 +18,9 @@\n             title: 'Users Management',\r\n             type: 'item',\r\n             url: '/usersManagement',\r\n             icon: icons.UnorderedListOutlined\r\n-        },\r\n-        {\r\n-            id: 'edit-profile',\r\n-            title: 'Edit Profile',\r\n-            type: 'item',\r\n-            url: '/EditProfile',\r\n-            icon: icons.UnorderedListOutlined\r\n         }\r\n-\r\n     ]\r\n };\r\n \r\n export default adminmm;\r\n"
+                },
+                {
+                    "date": 1676473033616,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,8 +18,15 @@\n             title: 'Users Management',\r\n             type: 'item',\r\n             url: '/usersManagement',\r\n             icon: icons.UnorderedListOutlined\r\n+        },\r\n+        {\r\n+            id: 'edit-profile',\r\n+            title: 'Edit Profile',\r\n+            type: 'item',\r\n+            url: '/EditProfile',\r\n+            icon: icons.UnorderedListOutlined\r\n         }\r\n     ]\r\n };\r\n \r\n"
+                },
+                {
+                    "date": 1676531354311,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,15 +18,8 @@\n             title: 'Users Management',\r\n             type: 'item',\r\n             url: '/usersManagement',\r\n             icon: icons.UnorderedListOutlined\r\n-        },\r\n-        {\r\n-            id: 'edit-profile',\r\n-            title: 'Edit Profile',\r\n-            type: 'item',\r\n-            url: '/EditProfile',\r\n-            icon: icons.UnorderedListOutlined\r\n         }\r\n     ]\r\n };\r\n \r\n"
+                },
+                {
+                    "date": 1676534006900,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,9 +16,9 @@\n         {\r\n             id: 'users-management',\r\n             title: 'Users Management',\r\n             type: 'item',\r\n-            url: '/usersManagement',\r\n+            url: '/EsersManagement',\r\n             icon: icons.UnorderedListOutlined\r\n         }\r\n     ]\r\n };\r\n"
+                },
+                {
+                    "date": 1676607204363,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,9 +16,9 @@\n         {\r\n             id: 'users-management',\r\n             title: 'Users Management',\r\n             type: 'item',\r\n-            url: '/EsersManagement',\r\n+            url: '/UsersManagement',\r\n             icon: icons.UnorderedListOutlined\r\n         }\r\n     ]\r\n };\r\n"
+                },
+                {
+                    "date": 1676608655018,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,9 +17,10 @@\n             id: 'users-management',\r\n             title: 'Users Management',\r\n             type: 'item',\r\n             url: '/UsersManagement',\r\n-            icon: icons.UnorderedListOutlined\r\n+            icon: icons.UnorderedListOutlined,\r\n+            breadcrumbs: false\r\n         }\r\n     ]\r\n };\r\n \r\n"
+                },
+                {
+                    "date": 1676608890089,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,9 +18,8 @@\n             title: 'Users Management',\r\n             type: 'item',\r\n             url: '/UsersManagement',\r\n             icon: icons.UnorderedListOutlined,\r\n-            breadcrumbs: false\r\n         }\r\n     ]\r\n };\r\n \r\n"
+                }
+            ],
+            "date": 1676447279505,
+            "name": "Commit-0",
+            "content": "// assets\r\nimport { FontSizeOutlined } from '@ant-design/icons';\r\n\r\n// icons\r\nconst icons = {\r\n    FontSizeOutlined\r\n};\r\n\r\n// ==============================|| MENU ITEMS - UTILITIES ||============================== //\r\n\r\nconst adminmm = {\r\n    id: 'adminmm',\r\n    title: 'Admin',\r\n    type: 'group',\r\n    children: [\r\n        {\r\n            id: 'admin-management',\r\n            title: 'Admin Management',\r\n            type: 'item',\r\n            url: '/adminManagement',\r\n            icon: icons.FontSizeOutlined\r\n        }\r\n    ]\r\n};\r\n\r\nexport default adminmm;\r\n"
+        }
+    ]
+}
