@@ -13,13 +13,13 @@ if (user) {
     switch (user.rolesId) {
         case 1:
             menuItems = {
-                items: [adminmm, dashboard, pages, utilities, support]
+                items: [adminmm, dashboard, utilities, support]
             };
 
             break;
         default:
             menuItems = {
-                items: [dashboard, pages, support]
+                items: [dashboard, support]
             };
 
             break;

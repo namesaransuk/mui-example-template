@@ -6,6 +6,8 @@ import MainLayout from 'layout/MainLayout';
 
 // render - dashboard
 const DashboardDefault = Loadable(lazy(() => import('pages/dashboard')));
+const Customer = Loadable(lazy(() => import('pages/customer')));
+const Product = Loadable(lazy(() => import('pages/product')));
 
 const AdminDefault = Loadable(lazy(() => import('pages/addminmm')));
 
@@ -52,6 +54,14 @@ const MainRoutes = {
                 {
                     path: 'default',
                     element: <DashboardDefault />
+                },
+                {
+                    path: 'customer',
+                    element: <Customer />
+                },
+                {
+                    path: 'product',
+                    element: <Product />
                 }
             ]
         },

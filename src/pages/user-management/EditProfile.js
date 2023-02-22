@@ -30,17 +30,17 @@ const EditProfile = () => {
                                 <Grid container justifyContent="space-between" alignItems="center">
                                     <Grid item>
                                         <Stack direction="row" spacing={1.25} alignItems="center">
-                                            <Avatar alt="profile user" src={avatar1} sx={{ width: 100, height: 100 }} />
+                                            <Avatar alt="profile user" src={user.avatar} sx={{ width: 100, height: 100 }} />
                                             <Stack>
                                                 <Typography variant="h4" color="#4e342e">
-                                                    {user.firstName + ' ' + user.lastName}
+                                                    {user.fname + ' ' + user.lname}
                                                 </Typography>
                                                 <Typography variant="subtitle1" color="#8d6e63">
-                                                    {user.userEmail}
+                                                    {user.email}
                                                 </Typography>
-                                                <Typography variant="body2" color="textSecondary">
+                                                {/* <Typography variant="body2" color="textSecondary">
                                                     UI/UX Designer
-                                                </Typography>
+                                                </Typography> */}
                                             </Stack>
                                         </Stack>
                                     </Grid>
