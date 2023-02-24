@@ -8,6 +8,7 @@ import MainLayout from 'layout/MainLayout';
 const DashboardDefault = Loadable(lazy(() => import('pages/dashboard')));
 const Customer = Loadable(lazy(() => import('pages/customer')));
 const Product = Loadable(lazy(() => import('pages/product')));
+const Cart = Loadable(lazy(() => import('pages/product/Cart')));
 
 const AdminDefault = Loadable(lazy(() => import('pages/addminmm')));
 
@@ -62,6 +63,10 @@ const MainRoutes = {
                 {
                     path: 'product',
                     element: <Product />
+                },
+                {
+                    path: 'cart',
+                    element: <Cart />
                 }
             ]
         },

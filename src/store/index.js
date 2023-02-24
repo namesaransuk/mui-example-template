@@ -1,15 +1,28 @@
 // third-party
 import { configureStore } from '@reduxjs/toolkit';
 
-// project import
-import reducers from './reducers';
+import storage from 'redux-persist/lib/storage';
+import { persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'redux-persist';
+
+import reducers from './reducer1';
+
+const persistConfig = {
+    key: 'root',
+    storage
+};
+
+const persistedReducer = persistReducer(persistConfig, reducers);
 
 const store = configureStore({
-    reducer: reducers
+    reducer: persistedReducer,
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware({
+            serializableCheck: {
+                ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
+            }
+        })
 });
 
-const { dispatch } = store;
+const { dispatch } = persistStore(store);
 
 export { store, dispatch };
-
-// export default store;
