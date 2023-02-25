@@ -11,6 +11,7 @@ import Typography from '@mui/material/Typography';
 import TabOne from './user-tab/TabOne';
 import TabTwo from './user-tab/TabTwo';
 import TabThree from './user-tab/TabThree';
+import TabFour from './user-tab/TabFour';
 
 const user = JSON.parse(localStorage.getItem('user'));
 
@@ -49,6 +50,7 @@ const ProfileData = () => {
                         <Tab label="Profile"></Tab>
                         <Tab label="Address"></Tab>
                         <Tab label="Other"></Tab>
+                        <Tab label="Social"></Tab>
                     </Tabs>
                 </CardContent>
             </Card>
@@ -65,6 +67,9 @@ const ProfileData = () => {
                             </TabPanel>
                             <TabPanel value={tabcount} index={2}>
                                 <TabThree></TabThree>
+                            </TabPanel>
+                            <TabPanel value={tabcount} index={3}>
+                                <TabFour></TabFour>
                             </TabPanel>
                         </SwipeableViews>
                     </CardContent>

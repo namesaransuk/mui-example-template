@@ -3,7 +3,6 @@ import './cart.css';
 import Total from './components/Total';
 import CartItem from './components/CartItem';
 import { useSelector } from 'react-redux';
-import Button from '@mui/material/Button';
 
 function Cart() {
     const { cart } = useSelector((state) => state.menu);

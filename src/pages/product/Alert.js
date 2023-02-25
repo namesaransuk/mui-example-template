@@ -72,9 +72,9 @@ export default function AlertDialogSlide() {
                             background: '#ffff'
                         });
                         dispatch(deleteAllItem());
-                        // setTimeout(function () {
-                        //     window.location.reload();
-                        // }, 1600);
+                        setTimeout(function () {
+                            window.location.reload();
+                        }, 1600);
                     } else {
                         Swal.fire({
                             position: 'center',

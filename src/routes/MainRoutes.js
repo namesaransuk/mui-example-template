@@ -3,12 +3,15 @@ import { lazy } from 'react';
 // project import
 import Loadable from 'components/Loadable';
 import MainLayout from 'layout/MainLayout';
+// import Line from '../Line';
 
 // render - dashboard
 const DashboardDefault = Loadable(lazy(() => import('pages/dashboard')));
 const Customer = Loadable(lazy(() => import('pages/customer')));
 const Product = Loadable(lazy(() => import('pages/product')));
 const Cart = Loadable(lazy(() => import('pages/product/Cart')));
+// const Line = Loadable(lazy(() => import('pages/Line')));
+const Social = Loadable(lazy(() => import('pages/social')));
 
 const AdminDefault = Loadable(lazy(() => import('pages/addminmm')));
 
@@ -93,6 +96,10 @@ const MainRoutes = {
         {
             path: 'UsersManagement',
             element: <AdminDefault />
+        },
+        {
+            path: 'Social',
+            element: <Social />
         }
     ]
 };
