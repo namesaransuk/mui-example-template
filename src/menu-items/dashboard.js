@@ -1,10 +1,11 @@
 // assets
-import { DashboardOutlined, TableOutlined, CoffeeOutlined } from '@ant-design/icons';
+import { DashboardOutlined, TableOutlined, CoffeeOutlined, InteractionOutlined } from '@ant-design/icons';
 // icons
 const icons = {
     DashboardOutlined,
     TableOutlined,
-    CoffeeOutlined
+    CoffeeOutlined,
+    InteractionOutlined
 };
 
 // ==============================|| MENU ITEMS - DASHBOARD ||============================== //
@@ -36,6 +37,14 @@ const dashboard = {
             type: 'item',
             url: '/dashboard/product',
             icon: icons.CoffeeOutlined,
+            breadcrumbs: false
+        },
+        {
+            id: 'social',
+            title: 'Social',
+            type: 'item',
+            url: '/dashboard/social',
+            icon: icons.InteractionOutlined,
             breadcrumbs: false
         }
     ]

@@ -41,12 +41,12 @@ const Customer = () => {
     }, [refresh]);
 
     const columns = [
-        { field: 'CustomerID', headerName: 'CustomerID', width: 150 },
-        { field: 'Name', headerName: 'Name', flex: 1 },
-        { field: 'Surname', headerName: 'Surname', flex: 1 },
-        { field: 'Role', headerName: 'Role', width: 150 },
-        { field: 'Salary', headerName: 'Salary', width: 150 },
-        { field: 'OT', headerName: 'OT', width: 150 },
+        { field: 'CustomerID', headerName: 'CustomerID', width: 150, editable: true },
+        { field: 'Name', headerName: 'Name', flex: 1, editable: true },
+        { field: 'Surname', headerName: 'Surname', flex: 1, editable: true },
+        { field: 'Role', headerName: 'Role', width: 150, editable: true },
+        { field: 'Salary', headerName: 'Salary', width: 150, editable: true },
+        { field: 'OT', headerName: 'OT', width: 150, editable: true },
         {
             // field: 'id',
             headerName: 'Action',

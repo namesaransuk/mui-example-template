@@ -70,6 +70,10 @@ const MainRoutes = {
                 {
                     path: 'cart',
                     element: <Cart />
+                },
+                {
+                    path: 'social',
+                    element: <Social />
                 }
             ]
         },
@@ -96,10 +100,6 @@ const MainRoutes = {
         {
             path: 'UsersManagement',
             element: <AdminDefault />
-        },
-        {
-            path: 'Social',
-            element: <Social />
         }
     ]
 };
