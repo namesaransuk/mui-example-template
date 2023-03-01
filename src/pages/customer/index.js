@@ -9,20 +9,22 @@ import EditCustomer from './EditCustomer';
 import DeleteCustomer from './DeleteCustomer';
 import CreateCustomer from './CreateCustomer';
 
-// import { connect } from 'react-redux';
-
-// const mapStateToProps = function (state) {
-//     return {
-//         message: 'This is message from mapStateToProps',
-//         counter: state.counters || 0
-//     };
-// };
-
 const Customer = () => {
     const [rows, setRows] = useState({});
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [refresh, setRefresh] = useState(null);
+
+    const handleUpdateData = () => {
+        axios
+            .put('http://localhost/react-api/', rows)
+            .then((response) => {
+                console.log(response.data);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    };
 
     const fetchData = async () => {
         try {
@@ -41,6 +43,7 @@ const Customer = () => {
     }, [refresh]);
 
     const columns = [
+        { field: 'id', headerName: 'ID', width: 70 },
         { field: 'CustomerID', headerName: 'CustomerID', width: 150, editable: true },
         { field: 'Name', headerName: 'Name', flex: 1, editable: true },
         { field: 'Surname', headerName: 'Surname', flex: 1, editable: true },
@@ -66,20 +69,12 @@ const Customer = () => {
 
     return (
         <div style={{ height: 400, width: '100%' }}>
-            {/* <Typography>
-                <h2>Test Redux - {counter}</h2>
-                <Button variant="contained" color="success" onClick={() => dispatch(increment(1))}>
-                    +
-                </Button>
-                <Button variant="contained" color="success" onClick={() => dispatch(decrement(1))}>
-                    -
-                </Button>
-            </Typography> */}
             <Typography align="center" sx={{ width: '100%', mb: 2 }}>
                 {loading && <p>Loading...</p>}
                 {error && <p>Error: {error.message}</p>}
             </Typography>
             <Typography align="right" sx={{ width: '100%', mb: 2 }}>
+                {/* <button onClick={handleUpdateData}>Update Data</button> */}
                 <CreateCustomer setRefresh={setRefresh} />
             </Typography>
             <DataGrid
@@ -100,5 +95,4 @@ const Customer = () => {
     );
 };
 
-// export default connect(mapStateToProps)(Customer);
 export default Customer;

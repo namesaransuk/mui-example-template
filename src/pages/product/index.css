@@ -42,7 +42,7 @@
 .shopping-cart {
   background-color: black;
   position: relative;
-  padding: 24px;
+  padding: 22px;
   width: 70px;
   height: 70px;
   border-radius: 50%;
@@ -72,7 +72,7 @@
   width: 25px;
   height: 25px;
   border-radius: 100%;
-  padding: 2px 0 0 2px;
+  padding: 5px 0 0 1px;
   margin: 0;
 }
 

@@ -17,7 +17,7 @@ import Slide from '@mui/material/Slide';
 import Cart from './Cart';
 
 import { ShoppingCart } from '@mui/icons-material';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteAllItem } from '../../store/reducer1/menu';
 
@@ -30,7 +30,7 @@ export default function AlertDialogSlide() {
 
     const dispatch = useDispatch();
 
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     const { cart } = useSelector((state) => state.menu);
     const getTotalQuantity = () => {
         let total = 0;
@@ -64,7 +64,7 @@ export default function AlertDialogSlide() {
                         Swal.fire({
                             position: 'center',
                             icon: 'success',
-                            title: 'เพิ่มพนักงานเรียบร้อย',
+                            title: 'เพิ่มสินค้าเรียบร้อย',
                             showConfirmButton: false,
                             timer: 1500,
                             width: 600,
@@ -98,10 +98,10 @@ export default function AlertDialogSlide() {
 
     return (
         <div>
-            <div className="shopping-cart" onClick={handleClickOpen}>
+            <button className="shopping-cart" onClick={handleClickOpen}>
                 <ShoppingCart id="cartIcon" />
                 <p>{getTotalQuantity() || 0}</p>
-            </div>
+            </button>
             <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition}>
                 <AppBar sx={{ position: 'relative' }}>
                     <Toolbar>
