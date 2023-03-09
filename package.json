@@ -14,6 +14,7 @@
         "@mui/lab": "^5.0.0-alpha.100",
         "@mui/material": "^5.10.6",
         "@mui/x-data-grid": "^5.17.23",
+        "@mui/x-data-grid-generator": "^6.0.0",
         "@react-oauth/google": "^0.8.0",
         "@reduxjs/toolkit": "^1.9.2",
         "@testing-library/jest-dom": "^5.16.5",
