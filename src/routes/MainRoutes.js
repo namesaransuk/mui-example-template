@@ -3,7 +3,6 @@ import { lazy } from 'react';
 // project import
 import Loadable from 'components/Loadable';
 import MainLayout from 'layout/MainLayout';
-// import Line from '../Line';
 
 // render - dashboard
 const DashboardDefault = Loadable(lazy(() => import('pages/dashboard')));
@@ -47,64 +46,69 @@ const MainRoutes = {
     children: [
         {
             path: '/',
-            element: <DashboardDefault />
-        },
-        {
-            path: 'color',
-            element: <Color />
-        },
-        {
-            path: 'dashboard',
             children: [
                 {
-                    path: 'default',
+                    path: '/',
                     element: <DashboardDefault />
                 },
                 {
-                    path: 'customer',
-                    element: <Customer />
+                    path: 'color',
+                    element: <Color />
                 },
                 {
-                    path: 'product',
-                    element: <Product />
+                    path: 'dashboard',
+                    children: [
+                        {
+                            path: 'default',
+                            element: <DashboardDefault />
+                        },
+                        {
+                            path: 'customer',
+                            element: <Customer />
+                        },
+                        {
+                            path: 'product',
+                            element: <Product />
+                        },
+                        {
+                            path: 'cart',
+                            element: <Cart />
+                        },
+                        {
+                            path: 'social',
+                            element: <Social />
+                        },
+                        {
+                            path: 'excel',
+                            element: <Excel />
+                        }
+                    ]
                 },
                 {
-                    path: 'cart',
-                    element: <Cart />
+                    path: 'sample-page',
+                    element: <SamplePage />
                 },
                 {
-                    path: 'social',
-                    element: <Social />
+                    path: 'shadow',
+                    element: <Shadow />
                 },
                 {
-                    path: 'excel',
-                    element: <Excel />
+                    path: 'typography',
+                    element: <Typography />
+                },
+                {
+                    path: 'icons/ant',
+                    element: <AntIcons />
+                },
+                {
+                    path: 'EditProfile',
+                    element: <EditProfile />
+                },
+                {
+                    path: 'UsersManagement',
+                    element: <AdminDefault />
                 }
             ]
-        },
-        {
-            path: 'sample-page',
-            element: <SamplePage />
-        },
-        {
-            path: 'shadow',
-            element: <Shadow />
-        },
-        {
-            path: 'typography',
-            element: <Typography />
-        },
-        {
-            path: 'icons/ant',
-            element: <AntIcons />
-        },
-        {
-            path: 'EditProfile',
-            element: <EditProfile />
-        },
-        {
-            path: 'UsersManagement',
-            element: <AdminDefault />
         }
     ]
 };

@@ -33,7 +33,7 @@ const EditProfile = () => {
                                             <Avatar alt="profile user" src={user.avatar} sx={{ width: 100, height: 100 }} />
                                             <Stack>
                                                 <Typography variant="h4" color="#4e342e">
-                                                    {user.fname + ' ' + user.lname}
+                                                    {user.name}
                                                 </Typography>
                                                 <Typography variant="subtitle1" color="#8d6e63">
                                                     {user.email}

@@ -10,7 +10,7 @@ import adminmm from './adminmm';
 const user = JSON.parse(localStorage.getItem('user'));
 let menuItems = null;
 if (user) {
-    switch (user.rolesId) {
+    switch (user.role) {
         case 1:
             menuItems = {
                 items: [adminmm, dashboard, utilities, support]

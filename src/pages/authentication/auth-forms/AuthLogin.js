@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { redirect, useNavigate, Link as RouterLink } from 'react-router-dom';
 
 // material-ui
@@ -35,7 +35,9 @@ import { EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons';
 // ============================|| FIREBASE - LOGIN ||============================ //
 
 async function loginUser(credentials) {
-    const url = 'https://www.melivecode.com/api/login';
+    // const url = 'https://www.melivecode.com/api/login';
+    const url = 'http://localhost/react-api/login.php';
+
     try {
         const response = await axios.post(url, credentials, {
             headers: {
@@ -66,22 +68,22 @@ const AuthLogin = () => {
         <>
             <Formik
                 initialValues={{
-                    username: 'karn.yong@melivecode.com',
-                    password: 'melivecode',
-                    submit: null
+                    email: '',
+                    password: ''
+                    // submit: null
                 }}
                 validationSchema={Yup.object().shape({
-                    username: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
+                    email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
                     password: Yup.string().max(255).required('Password is required')
                 })}
                 onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
                     try {
                         const response = await loginUser({
-                            username: values.username,
+                            email: values.email,
                             password: values.password
                         });
                         //console.log(response);
-                        if ((response.status = 'ok')) {
+                        if (response.status == 1) {
                             swal('Success', response.message, 'success', {
                                 buttons: false,
                                 timer: 1000
@@ -91,9 +93,13 @@ const AuthLogin = () => {
 
                                 window.location.pathname == '/login' ? navigate('/') : window.location.reload(false);
                                 //window.location.reload(false);
+                                console.log(response);
                             });
                         } else {
-                            swal('Failed', response.msg, 'error');
+                            swal('Failed', response.message, 'error', {
+                                buttons: false,
+                                timer: 1000
+                            });
                         }
 
                         setStatus({ success: false });

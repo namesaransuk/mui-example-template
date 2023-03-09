@@ -1,11 +1,12 @@
 // assets
-import { DashboardOutlined, TableOutlined, CoffeeOutlined, InteractionOutlined } from '@ant-design/icons';
+import { DashboardOutlined, TableOutlined, CoffeeOutlined, InteractionOutlined, FileExcelOutlined } from '@ant-design/icons';
 // icons
 const icons = {
     DashboardOutlined,
     TableOutlined,
     CoffeeOutlined,
-    InteractionOutlined
+    InteractionOutlined,
+    FileExcelOutlined
 };
 
 // ==============================|| MENU ITEMS - DASHBOARD ||============================== //
@@ -45,6 +46,14 @@ const dashboard = {
             type: 'item',
             url: '/dashboard/social',
             icon: icons.InteractionOutlined,
+            breadcrumbs: false
+        },
+        {
+            id: 'excel',
+            title: 'Excel',
+            type: 'item',
+            url: '/dashboard/excel',
+            icon: icons.FileExcelOutlined,
             breadcrumbs: false
         }
     ]

@@ -35,7 +35,7 @@ const CreateCustomer = (props) => {
             OT: addCustomer.OT
         };
         axios
-            .post('http://localhost/react-api/', data)
+            .get('http://localhost/react-api/', data)
             .then((response) => {
                 if ((response.status = 1)) {
                     handleClose2();
