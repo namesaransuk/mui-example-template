@@ -4,14 +4,9 @@ import Swal from 'sweetalert2';
 import { read, utils, writeFile } from 'xlsx';
 // import { v4 as uuid } from 'uuid';
 
-import Snackbar from '@mui/material/Snackbar';
-import Dialog from '@mui/material/Dialog';
-import DialogTitle from '@mui/material/DialogTitle';
-import DialogContent from '@mui/material/DialogContent';
-import DialogActions from '@mui/material/DialogActions';
 import Button from '@mui/material/Button';
-import Alert from '@mui/material/Alert';
-import { DataGrid, GridToolbar, GridCellEditCommitParams } from '@mui/x-data-grid';
+import { DataGrid, GridToolbar } from '@mui/x-data-grid';
+import { Box } from '../../../node_modules/@mui/material/index';
 
 const Excel = () => {
     const [data, setData] = useState([]);
@@ -121,19 +116,50 @@ const Excel = () => {
 
     const handleEditCellChangeCommitted = (params) => {
         console.log(params);
-        axios
-            .put('http://localhost/react-api/excel.php', {
-                id: params.id,
-                value: params.value,
-                field: params.field
-            })
-            .then((response) => {
-                console.log(response.data);
-            })
-            .catch((error) => {
-                console.error(error);
-            });
-        // console.log(params);
+
+        Swal.fire({
+            title: 'เปลี่ยนแปลงรายการ ?',
+            text: 'ต้องการแก้ไขเป็น "' + params.value + '" ใช่หรือไม่!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#588157',
+            cancelButtonColor: '#646464',
+            confirmButtonText: 'ยืนยัน',
+            cancelButtonText: 'ปิด'
+        }).then((response) => {
+            // console.log(response);
+            if (response.isConfirmed) {
+                let result = axios.put('http://localhost/react-api/excel.php', {
+                    id: params.id,
+                    value: params.value,
+                    field: params.field
+                });
+                if ((result.status = 1)) {
+                    Swal.fire({
+                        position: 'center-center',
+                        icon: 'success',
+                        title: 'แก้ไขรายการสำเร็จ',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    setLastRefresh(new Date());
+                    // setTimeout(function () {
+                    //     window.location.reload();
+                    // }, 1600);
+                } else {
+                    Swal.fire({
+                        position: 'center-center',
+                        icon: 'error',
+                        title: 'แก้ไขรายการไม่สำเร็จ',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    setLastRefresh(new Date());
+                }
+            } else {
+                setLastRefresh(new Date());
+            }
+        });
 
         // async function updateData() {
         //     const data = {
@@ -166,26 +192,26 @@ const Excel = () => {
             <div className="row mb-2 mt-5">
                 <div className="col-sm-6 offset-3">
                     <div className="row">
-                        <div className="col-sm-6">
-                            <Button variant="contained" component="label">
-                                Upload
-                                <input
-                                    hidden
-                                    multiple
-                                    type="file"
-                                    name="file"
-                                    className="custom-file-input"
-                                    id="inputGroupFile"
-                                    required
-                                    onChange={handleImport}
-                                    accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
-                                />
-                            </Button>
-                        </div>
-                        <div className="col-sm-6">
-                            <Button variant="contained" color="success" onClick={handleExport}>
-                                Success
-                            </Button>
+                        <div className="col-sm-12 text-right">
+                            <Box align="right" mb={2}>
+                                <Button variant="contained" component="label" sx={{ m: 1 }}>
+                                    Upload
+                                    <input
+                                        hidden
+                                        multiple
+                                        type="file"
+                                        name="file"
+                                        className="custom-file-input"
+                                        id="inputGroupFile"
+                                        required
+                                        onChange={handleImport}
+                                        accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+                                    />
+                                </Button>
+                                <Button variant="contained" color="success" onClick={handleExport} sx={{ m: 1 }}>
+                                    Success
+                                </Button>
+                            </Box>
                         </div>
                     </div>
                 </div>
@@ -203,7 +229,7 @@ const Excel = () => {
                             components={{
                                 Toolbar: GridToolbar
                             }}
-                            onCellEditCommit={(params: GridCellEditCommitParams, event: MuiEvent) => {
+                            onCellEditCommit={(params) => {
                                 handleEditCellChangeCommitted(params);
                             }}
                             // onCellEditStart={handleCellEditStart}

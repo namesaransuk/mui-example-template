@@ -1,53 +1,103 @@
 import React, { useState } from 'react';
-import axios from 'axios';
-import { DataGrid } from '@mui/x-data-grid';
+import FullCalendar from '@fullcalendar/react';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import timeGridPlugin from '@fullcalendar/timegrid';
+import interactionPlugin from '@fullcalendar/interaction';
+import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Button } from '@mui/material';
+import TextField from '@mui/material/TextField';
+import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 
-const columns = [
-    { field: 'id', headerName: 'ID', width: 90 },
-    { field: 'firstName', headerName: 'First Name', width: 150, editable: true },
-    { field: 'lastName', headerName: 'Last Name', width: 150, editable: true },
-    { field: 'age', headerName: 'Age', type: 'number', width: 90, editable: true }
-];
+function Calendar() {
+    const [open, setOpen] = useState(false);
+    const [openAdd, setOpenAdd] = useState(false);
+    const [events, setEvents] = useState([
+        {
+            title: 'Event 1',
+            description: 'Event 1 description',
+            start: '2023-03-13 10:00:00',
+            end: '2023-03-14 12:00:00'
+        },
+        {
+            title: 'Event 2',
+            description: 'Event 2 description',
+            start: '2023-03-15T14:00:00',
+            end: '2023-03-15T16:00:00'
+        }
+    ]);
 
-const initialRows = [
-    { id: 1, firstName: 'John', lastName: 'Doe', age: 35 },
-    { id: 2, firstName: 'Jane', lastName: 'Doe', age: 28 }
-];
-
-const DataGridExample = () => {
-    const [rows, setRows] = useState(initialRows);
-
-    const handleEditCellChange = ({ id, field, props }) => {
-        const newValue = props.value;
-        const updatedRows = rows.map((row) => {
-            if (row.id === id) {
-                return { ...row, [field]: newValue };
-            }
-            return row;
-        });
-        setRows(updatedRows);
-        updateData(id, field, newValue);
+    const handleEventClick = ({ event }) => {
+        console.log(events);
+        setEvents(event);
+        setOpen(true);
     };
 
-    const updateData = (id, field, newValue) => {
-        axios
-            .patch(`/api/data/${id}`, { [field]: newValue })
-            .then((response) => console.log(response))
-            .catch((error) => console.log(error));
+    const handleClose = () => {
+        setOpen(false);
+        setOpenAdd(false);
+    };
+
+    const handleAddEvent = ({ start, end }) => {
+        // const newEvent = {
+        //     title: 'New Event',
+        //     start,
+        //     end,
+        //     description: 'New Event description'
+        // };
+        // setEvents([...events, newEvent]);
+        setOpenAdd(true);
     };
 
     return (
-        <div style={{ height: 400, width: '100%' }}>
-            <DataGrid
-                columns={columns}
-                rows={rows}
-                pageSize={5}
-                checkboxSelection
-                disableSelectionOnClick
-                onRowClick={handleEditCellChange}
+        <div>
+            <FullCalendar
+                plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+                // initialView="timeGridWeek"
+                events={events}
+                selectable={true}
+                select={handleAddEvent}
+                eventClick={handleEventClick}
             />
+            {events && (
+                <Dialog open={open} onClose={handleClose}>
+                    <DialogTitle>{events.title}</DialogTitle>
+                    <DialogContent>
+                        <DialogContentText>{events.description}</DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={handleClose} color="primary">
+                            Close
+                        </Button>
+                    </DialogActions>
+                </Dialog>
+            )}
+
+            <Dialog open={openAdd} onClose={handleClose}>
+                <DialogTitle>เพิ่มข้อมูล</DialogTitle>
+                <DialogContent>
+                    <TextField id="title" label="title" variant="outlined" />
+                    <TextField id="description" label="description" variant="outlined" />
+                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                        <DemoContainer components={['DateTimePicker']}>
+                            <DateTimePicker label="start" />
+                        </DemoContainer>
+                    </LocalizationProvider>
+                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                        <DemoContainer components={['DateTimePicker']}>
+                            <DateTimePicker label="end" />
+                        </DemoContainer>
+                    </LocalizationProvider>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleClose} color="primary">
+                        Close
+                    </Button>
+                </DialogActions>
+            </Dialog>
         </div>
     );
-};
+}
 
-export default DataGridExample;
+export default Calendar;
