@@ -12,6 +12,7 @@ const Cart = Loadable(lazy(() => import('pages/product/Cart')));
 // const Line = Loadable(lazy(() => import('pages/Line')));
 const Social = Loadable(lazy(() => import('pages/social')));
 const Excel = Loadable(lazy(() => import('pages/excel')));
+const Calendar = Loadable(lazy(() => import('pages/calendar')));
 const Test = Loadable(lazy(() => import('pages/test')));
 
 const AdminDefault = Loadable(lazy(() => import('pages/addminmm')));
@@ -82,6 +83,10 @@ const MainRoutes = {
                         {
                             path: 'excel',
                             element: <Excel />
+                        },
+                        {
+                            path: 'calendar',
+                            element: <Calendar />
                         },
                         {
                             path: 'test',
