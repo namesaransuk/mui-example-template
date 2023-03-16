@@ -13,6 +13,8 @@ import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
+import moment from 'moment';
+import 'moment-timezone';
 
 const Calendar = () => {
     const [open, setOpen] = useState(false);
@@ -32,11 +34,19 @@ const Calendar = () => {
     const [endDate, setEndDate] = useState(null);
 
     const handleStartDateChange = (date) => {
-        setStartDate(date);
+        const initialDate = new Date(date.$y, date.$M, date.$D, date.$H, date.$m, date.$s, date.$ms);
+        const bangkokDatetime = moment.tz(initialDate, 'Asia/Bangkok');
+        const formattedDatetime = bangkokDatetime.format('YYYY-MM-DD HH:mm:ss');
+        console.log(formattedDatetime);
+        setStartDate(formattedDatetime);
     };
 
     const handleEndDateChange = (date) => {
-        setEndDate(date);
+        const initialDate = new Date(date.$y, date.$M, date.$D, date.$H, date.$m, date.$s, date.$ms);
+        const bangkokDatetime = moment.tz(initialDate, 'Asia/Bangkok');
+        const formattedDatetime = bangkokDatetime.format('YYYY-MM-DD HH:mm:ss');
+        console.log(formattedDatetime);
+        setEndDate(formattedDatetime);
     };
 
     useEffect(() => {
@@ -53,7 +63,17 @@ const Calendar = () => {
 
     const handleEventClick = (info) => {
         axios.get('http://localhost/react-api/calendar.php/' + info.event.id).then((response) => {
-            setEventsId(response.data);
+            // setEventsId(response.data);
+            const parsedDateStart = moment(response.data.start, 'YYYY-MM-DD HH:mm:ss').tz('Asia/Bangkok').toDate();
+            const parsedDateEnd = moment(response.data.end, 'YYYY-MM-DD HH:mm:ss').tz('Asia/Bangkok').toDate();
+            const result = {
+                title: response.data.title,
+                description: response.data.description,
+                start: parsedDateStart,
+                end: parsedDateEnd
+            };
+            setEventsId(result);
+            console.log(result);
         });
         setOpen(true);
     };
@@ -61,6 +81,7 @@ const Calendar = () => {
     const handleClose = () => {
         setOpen(false);
         setOpenAdd(false);
+        setEventsId([]);
     };
 
     const handleModalEvent = () => {
@@ -68,21 +89,19 @@ const Calendar = () => {
     };
 
     const handleAddEvent = () => {
+        const data = {
+            title: inputs.title,
+            description: inputs.description,
+            start: startDate,
+            end: endDate
+        };
+        console.log(data);
         axios
-            .post(
-                'http://localhost/react-api/calendar.php',
-                {
-                    title: inputs.title,
-                    description: inputs.description,
-                    start: startDate,
-                    end: endDate
-                },
-                {
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
+            .post('http://localhost/react-api/calendar.php', data, {
+                headers: {
+                    'Content-Type': 'application/json'
                 }
-            )
+            })
             .then((response) => {
                 if ((response.status = 1)) {
                     handleClose();
@@ -149,18 +168,48 @@ const Calendar = () => {
                 <Dialog open={open} onClose={handleClose}>
                     <DialogTitle>{eventsId.title}</DialogTitle>
                     <DialogContent>
-                        <TextField id="title" name="title" label="title" variant="outlined" value={eventsId.title} />
-                        <br />
-                        <br />
-                        <TextField id="description" label="description" multiline rows={4} defaultValue={eventsId.description} />
+                        <TextField
+                            id="title"
+                            name="title"
+                            label="title"
+                            variant="outlined"
+                            value={eventsId.title}
+                            required
+                            sx={{ marginTop: 1 }}
+                            fullWidth
+                        />
+                        <TextField
+                            id="description"
+                            label="description"
+                            multiline
+                            rows={4}
+                            defaultValue={eventsId.description}
+                            required
+                            sx={{ marginTop: 1 }}
+                            fullWidth
+                        />
                         <LocalizationProvider dateAdapter={AdapterDayjs}>
                             <DemoContainer components={['DateTimePicker']}>
-                                <DateTimePicker label="start" id="start" name="start" />
+                                <DateTimePicker
+                                    label="start"
+                                    id="start"
+                                    name="start"
+                                    value={eventsId.start}
+                                    ampm={false}
+                                    inputFormat="yyyy/MM/dd hh:mm:ss"
+                                />
                             </DemoContainer>
                         </LocalizationProvider>
                         <LocalizationProvider dateAdapter={AdapterDayjs}>
                             <DemoContainer components={['DateTimePicker']}>
-                                <DateTimePicker label="end" id="end" name="end" />
+                                <DateTimePicker
+                                    label="end"
+                                    id="end"
+                                    name="end"
+                                    value={eventsId.end}
+                                    ampm={false}
+                                    inputFormat="yyyy/MM/dd hh:mm:ss"
+                                />
                             </DemoContainer>
                         </LocalizationProvider>
                         {/* <DialogContentText>{eventsId.description}</DialogContentText> */}
@@ -174,58 +223,49 @@ const Calendar = () => {
             )}
 
             <Dialog open={openAdd} onClose={handleClose}>
-                <form onSubmit={handleAddEvent}>
-                    <DialogTitle>เพิ่มข้อมูล</DialogTitle>
-                    <DialogContent>
-                        <TextField
-                            id="title"
-                            name="title"
-                            label="title"
-                            variant="outlined"
-                            onChange={handleChange}
-                            required
-                            sx={{ marginTop: 1 }}
-                            fullWidth
-                        />
-                        <TextField
-                            id="description"
-                            name="description"
-                            label="description"
-                            variant="outlined"
-                            onChange={handleChange}
-                            multiline
-                            rows={4}
-                            required
-                            sx={{ marginTop: 1 }}
-                            fullWidth
-                        />
-                        <LocalizationProvider dateAdapter={AdapterDayjs}>
-                            <DemoContainer components={['DateTimePicker']}>
-                                <DateTimePicker
-                                    label="start"
-                                    id="start"
-                                    name="start"
-                                    onChange={handleStartDateChange}
-                                    ampm={false}
-                                    required
-                                />
-                            </DemoContainer>
-                        </LocalizationProvider>
-                        <LocalizationProvider dateAdapter={AdapterDayjs}>
-                            <DemoContainer components={['DateTimePicker']}>
-                                <DateTimePicker label="end" id="end" name="end" onChange={handleEndDateChange} ampm={false} required />
-                            </DemoContainer>
-                        </LocalizationProvider>
-                    </DialogContent>
-                    <DialogActions>
-                        <Button onClick={handleClose} color="primary">
-                            Close
-                        </Button>
-                        <Button type="submit" color="primary">
-                            Add
-                        </Button>
-                    </DialogActions>
-                </form>
+                <DialogTitle>เพิ่มข้อมูล</DialogTitle>
+                <DialogContent>
+                    <TextField
+                        id="title"
+                        name="title"
+                        label="title"
+                        variant="outlined"
+                        onChange={handleChange}
+                        required
+                        sx={{ marginTop: 1 }}
+                        fullWidth
+                    />
+                    <TextField
+                        id="description"
+                        name="description"
+                        label="description"
+                        variant="outlined"
+                        onChange={handleChange}
+                        multiline
+                        rows={4}
+                        required
+                        sx={{ marginTop: 1 }}
+                        fullWidth
+                    />
+                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                        <DemoContainer components={['DateTimePicker']}>
+                            <DateTimePicker label="start" id="start" name="start" onChange={handleStartDateChange} ampm={false} required />
+                        </DemoContainer>
+                    </LocalizationProvider>
+                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                        <DemoContainer components={['DateTimePicker']}>
+                            <DateTimePicker label="end" id="end" name="end" onChange={handleEndDateChange} ampm={false} required />
+                        </DemoContainer>
+                    </LocalizationProvider>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleClose} color="primary">
+                        Close
+                    </Button>
+                    <Button onClick={handleAddEvent} color="primary">
+                        Add
+                    </Button>
+                </DialogActions>
             </Dialog>
         </div>
     );
