@@ -12,16 +12,26 @@ function Cart() {
             <div className="cart__left">
                 <div>
                     <h3>Shopping Cart</h3>
-                    {cart?.map((item) => (
-                        <CartItem
-                            key={item.id}
-                            id={item.id}
-                            image={item.image}
-                            title={item.title}
-                            price={item.price}
-                            quantity={item.quantity}
-                        />
-                    ))}
+                    {cart ? (
+                        cart.map((item) => (
+                            <CartItem
+                                key={item.id}
+                                id={item.id}
+                                image={item.image}
+                                title={item.title}
+                                price={item.price}
+                                quantity={item.quantity}
+                            />
+                        ))
+                    ) : (
+                        <>
+                            <Skeleton variant="rectangular" width={210} height={118} />
+                            <Box sx={{ pt: 0.5 }}>
+                                <Skeleton />
+                                <Skeleton width="60%" />
+                            </Box>
+                        </>
+                    )}
                 </div>
             </div>
 

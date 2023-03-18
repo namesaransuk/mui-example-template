@@ -13,8 +13,8 @@ import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
-import moment from 'moment';
-import 'moment-timezone';
+import dayjs from 'dayjs';
+import 'dayjs/locale/en';
 
 const Calendar = () => {
     const [open, setOpen] = useState(false);
@@ -35,17 +35,13 @@ const Calendar = () => {
 
     const handleStartDateChange = (date) => {
         const initialDate = new Date(date.$y, date.$M, date.$D, date.$H, date.$m, date.$s, date.$ms);
-        const bangkokDatetime = moment.tz(initialDate, 'Asia/Bangkok');
-        const formattedDatetime = bangkokDatetime.format('YYYY-MM-DD HH:mm:ss');
-        console.log(formattedDatetime);
+        const formattedDatetime = dayjs(initialDate).format('YYYY-MM-DD HH:mm:ss');
         setStartDate(formattedDatetime);
     };
 
     const handleEndDateChange = (date) => {
         const initialDate = new Date(date.$y, date.$M, date.$D, date.$H, date.$m, date.$s, date.$ms);
-        const bangkokDatetime = moment.tz(initialDate, 'Asia/Bangkok');
-        const formattedDatetime = bangkokDatetime.format('YYYY-MM-DD HH:mm:ss');
-        console.log(formattedDatetime);
+        const formattedDatetime = dayjs(initialDate).format('YYYY-MM-DD HH:mm:ss');
         setEndDate(formattedDatetime);
     };
 
@@ -63,9 +59,8 @@ const Calendar = () => {
 
     const handleEventClick = (info) => {
         axios.get('http://localhost/react-api/calendar.php/' + info.event.id).then((response) => {
-            // setEventsId(response.data);
-            const parsedDateStart = moment(response.data.start, 'YYYY-MM-DD HH:mm:ss').tz('Asia/Bangkok').toDate();
-            const parsedDateEnd = moment(response.data.end, 'YYYY-MM-DD HH:mm:ss').tz('Asia/Bangkok').toDate();
+            const parsedDateStart = dayjs(response.data.start);
+            const parsedDateEnd = dayjs(response.data.end);
             const result = {
                 title: response.data.title,
                 description: response.data.description,
@@ -73,9 +68,8 @@ const Calendar = () => {
                 end: parsedDateEnd
             };
             setEventsId(result);
-            console.log(result);
+            setOpen(true);
         });
-        setOpen(true);
     };
 
     const handleClose = () => {
@@ -183,36 +177,21 @@ const Calendar = () => {
                             label="description"
                             multiline
                             rows={4}
-                            defaultValue={eventsId.description}
+                            value={eventsId.description}
                             required
                             sx={{ marginTop: 1 }}
                             fullWidth
                         />
                         <LocalizationProvider dateAdapter={AdapterDayjs}>
                             <DemoContainer components={['DateTimePicker']}>
-                                <DateTimePicker
-                                    label="start"
-                                    id="start"
-                                    name="start"
-                                    value={eventsId.start}
-                                    ampm={false}
-                                    inputFormat="yyyy/MM/dd hh:mm:ss"
-                                />
+                                <DateTimePicker label="start" id="start" name="start" defaultValue={eventsId.start} ampm={false} />
                             </DemoContainer>
                         </LocalizationProvider>
                         <LocalizationProvider dateAdapter={AdapterDayjs}>
                             <DemoContainer components={['DateTimePicker']}>
-                                <DateTimePicker
-                                    label="end"
-                                    id="end"
-                                    name="end"
-                                    value={eventsId.end}
-                                    ampm={false}
-                                    inputFormat="yyyy/MM/dd hh:mm:ss"
-                                />
+                                <DateTimePicker label="end" id="end" name="end" defaultValue={eventsId.end} ampm={false} />
                             </DemoContainer>
                         </LocalizationProvider>
-                        {/* <DialogContentText>{eventsId.description}</DialogContentText> */}
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={handleClose} color="primary">

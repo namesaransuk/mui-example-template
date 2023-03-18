@@ -5,7 +5,8 @@ import {
     CoffeeOutlined,
     InteractionOutlined,
     FileExcelOutlined,
-    CalendarOutlined
+    CalendarOutlined,
+    SnippetsOutlined
 } from '@ant-design/icons';
 // icons
 const icons = {
@@ -14,7 +15,8 @@ const icons = {
     CoffeeOutlined,
     InteractionOutlined,
     FileExcelOutlined,
-    CalendarOutlined
+    CalendarOutlined,
+    SnippetsOutlined
 };
 
 // ==============================|| MENU ITEMS - DASHBOARD ||============================== //
@@ -77,7 +79,7 @@ const dashboard = {
             title: 'Test',
             type: 'item',
             url: '/dashboard/test',
-            icon: icons.CalendarOutlined,
+            icon: icons.SnippetsOutlined,
             breadcrumbs: false
         }
     ]
