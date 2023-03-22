@@ -32,6 +32,8 @@
         "apexcharts": "^3.35.5",
         "axios": "^1.3.3",
         "buffer": "^6.0.3",
+        "child_process": "^1.0.2",
+        "cron": "^2.3.0",
         "crypto": "^1.0.1",
         "date-fns-tz": "^2.0.0",
         "formik": "^2.2.9",
@@ -41,6 +43,8 @@
         "lodash": "^4.17.21",
         "moment": "^2.29.4",
         "moment-timezone": "^0.5.41",
+        "node-cron": "^3.0.2",
+        "path": "^0.12.7",
         "prop-types": "^15.8.1",
         "react": "^18.2.0",
         "react-apexcharts": "^1.4.0",
@@ -94,6 +98,9 @@
         "presets": [
             "@babel/preset-react"
         ]
+    },
+    "browser": {
+        "child_process": false
     },
     "browserslist": {
         "production": [

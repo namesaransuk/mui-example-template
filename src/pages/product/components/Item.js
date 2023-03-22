@@ -18,12 +18,12 @@ function Item({ id, title, image, price }) {
     useEffect(() => {
         setTimeout(() => {
             setLoading(false);
-        }, 3000);
+        }, 1500);
     }, []);
 
     return (
         <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-            <CardMedia component="img" image={image} alt="random" />
+            {loading ? <Skeleton variant="rectangular" height={350} /> : <CardMedia component="img" image={image} alt="random" />}
             <CardContent sx={{ flexGrow: 1 }}>
                 <Typography gutterBottom variant="h5" component="h2">
                     {loading ? <Skeleton /> : title}
