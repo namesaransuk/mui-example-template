@@ -18,6 +18,8 @@ import dayjs from 'dayjs';
 import 'dayjs/locale/en';
 import './style.css';
 
+const user = JSON.parse(localStorage.getItem('user'));
+
 const Calendar = () => {
     const [open, setOpen] = useState(false);
     const [openAdd, setOpenAdd] = useState(false);
@@ -25,28 +27,28 @@ const Calendar = () => {
     const [events, setEvents] = useState([]);
     const [inputs, setInputs] = useState({});
 
-    const fetchData = async () => {
-        try {
-            const response = await axios.get('http://localhost/react-api/calendar.php');
-            const data = response.data;
-            const currentTime = new Date();
-            const interval = setInterval(() => {
-                for (let i = 0; i < data.length; i++) {
-                    const timestamp = new Date(data[i].start);
-                    if (timestamp === currentTime) {
-                        sendNotification();
-                    }
-                }
-            }, 1000);
-            return () => clearInterval(interval);
-        } catch (error) {
-            console.error(error);
-        }
-    };
+    // const fetchData = async () => {
+    //     try {
+    //         const response = await axios.get('http://localhost/react-api/calendar.php');
+    //         const data = response.data;
+    //         const currentTime = new Date();
+    //         const interval = setInterval(() => {
+    //             for (let i = 0; i < data.length; i++) {
+    //                 const timestamp = new Date(data[i].start);
+    //                 if (timestamp === currentTime) {
+    //                     sendNotification();
+    //                 }
+    //             }
+    //         }, 1000);
+    //         return () => clearInterval(interval);
+    //     } catch (error) {
+    //         console.error(error);
+    //     }
+    // };
 
-    useEffect(() => {
-        fetchData();
-    }, []);
+    // useEffect(() => {
+    //     fetchData();
+    // }, []);
 
     // cron.schedule('* * * * *', () => {
     //     events.forEach((event) => {
@@ -56,9 +58,11 @@ const Calendar = () => {
     //     });
     // });
 
-    const sendNotification = () => {
+    const sendNotification = (msg) => {
         axios
-            .post('http://localhost/react-api/line-notify.php')
+            .post('http://localhost/react-api/line-notify.php', {
+                message: `${msg}`
+            })
 
             .then((response) => {
                 console.log(response.data);
@@ -115,7 +119,6 @@ const Calendar = () => {
                 start: parsedDateStart,
                 end: parsedDateEnd
             };
-
             setInputs(result);
             setOpen(true);
         });
@@ -157,8 +160,13 @@ const Calendar = () => {
                         padding: '3em',
                         background: '#ffff'
                     });
-                    sendNotification();
+                    sendNotification(
+                        `เพิ่มรายการโดย ${user.name} \nหัวเรื่อง : ${data.title}\nรายละเอียด : ${data.description}\nวันที่เริ่ม : ${data.start}\nวันที่สิ้นสุด : ${data.end}`
+                    );
                     setLastRefresh(new Date());
+                    setInputs({});
+                    setStartDate(null);
+                    setEndDate(null);
                 } else {
                     Swal.fire({
                         position: 'center',
@@ -190,12 +198,14 @@ const Calendar = () => {
             cancelButtonText: 'ปิด'
         }).then((response) => {
             if (response.isConfirmed) {
+                const parsedDateStart = dayjs(inputs.start).format('YYYY-MM-DD HH:mm:ss');
+                const parsedDateEnd = dayjs(inputs.end).format('YYYY-MM-DD HH:mm:ss');
                 let data = {
                     id: inputs.id,
                     title: inputs.title,
                     description: inputs.description,
-                    start: startDate,
-                    end: endDate
+                    start: startDate ? startDate : parsedDateStart,
+                    end: endDate ? endDate : parsedDateEnd
                 };
                 let result = axios.put('http://localhost/react-api/calendar.php', data);
                 if ((result.status = 1)) {
@@ -206,8 +216,14 @@ const Calendar = () => {
                         showConfirmButton: false,
                         timer: 1500
                     });
+                    sendNotification(
+                        `อัพเดตรายการโดย ${user.name} \nหัวเรื่อง : ${data.title}\nรายละเอียด : ${data.description}\nวันที่เริ่ม : ${data.start}\nวันที่สิ้นสุด : ${data.end}`
+                    );
                     setLastRefresh(new Date());
                     handleClose();
+                    setInputs({});
+                    setStartDate(null);
+                    setEndDate(null);
                 } else {
                     Swal.fire({
                         position: 'center-center',
@@ -300,24 +316,46 @@ const Calendar = () => {
                                     label="start"
                                     id="start"
                                     name="start"
-                                    defaultValue={inputs.start}
+                                    value={inputs.start ?? ' '}
                                     ampm={false}
                                     onChange={handleStartDateChange}
                                 />
                             </DemoContainer>
                         </LocalizationProvider>
+                        <TextField
+                            id="start"
+                            name="start"
+                            label="start"
+                            variant="outlined"
+                            value={inputs.start}
+                            required
+                            sx={{ marginTop: 1, display: 'none' }}
+                            fullWidth
+                            onChange={handleChange}
+                        />
                         <LocalizationProvider dateAdapter={AdapterDayjs}>
                             <DemoContainer components={['DateTimePicker']}>
                                 <DateTimePicker
                                     label="end"
                                     id="end"
                                     name="end"
-                                    defaultValue={inputs.end}
+                                    value={inputs.end ?? ' '}
                                     ampm={false}
                                     onChange={handleEndDateChange}
                                 />
                             </DemoContainer>
                         </LocalizationProvider>
+                        <TextField
+                            id="end"
+                            name="end"
+                            label="end"
+                            variant="outlined"
+                            value={inputs.end}
+                            required
+                            sx={{ marginTop: 1, display: 'none' }}
+                            fullWidth
+                            onChange={handleChange}
+                        />
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={handleClose} color="primary">

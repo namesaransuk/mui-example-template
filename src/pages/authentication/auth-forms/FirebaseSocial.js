@@ -42,22 +42,26 @@ const FirebaseSocial = () => {
     };
 
     // const [userGithub, setUserGithub] = useState([]);
-    const githubHandler = async (response) => {
-        console.log(response.code);
+    // const githubHandler = async (response) => {
+    //     console.log(response.code);
 
-        // const params = new URLSearchParams();
-        // params.append('client_id', 'fceb8c9464979d77369d');
-        // params.append('client_secret', 'd6bc79fff5c64e1374e9c717ea8f3d7cff13b8d8');
-        // params.append('code', response.code);
-        const accessToken = response.code;
-        const result = await axios(`https://api.github.com/user`, {
-            headers: {
-                Authorization: `Bearer token ${accessToken}`
-            }
-        });
-        // const data = await result.json();
-        console.log(result);
-        // setUserData(data);
+    //     // const params = new URLSearchParams();
+    //     // params.append('client_id', 'fceb8c9464979d77369d');
+    //     // params.append('client_secret', 'd6bc79fff5c64e1374e9c717ea8f3d7cff13b8d8');
+    //     // params.append('code', response.code);
+    //     const accessToken = response.code;
+    //     const result = await axios(`https://api.github.com/user`, {
+    //         headers: {
+    //             Authorization: `Bearer token ${accessToken}`
+    //         }
+    //     });
+    //     // const data = await result.json();
+    //     console.log(result);
+    //     // setUserData(data);
+    // };
+
+    const twitterHandler = (err, data) => {
+        console.log(err, data);
     };
 
     const facebookHandler = async (response) => {
@@ -100,7 +104,7 @@ const FirebaseSocial = () => {
                     </Button>
                 )}
             />
-            <GitHubLogin
+            {/* <GitHubLogin
                 clientId="fceb8c9464979d77369d"
                 clientSecret="d6bc79fff5c64e1374e9c717ea8f3d7cff13b8d8"
                 redirectUri="http://localhost:3006/"
@@ -109,7 +113,8 @@ const FirebaseSocial = () => {
                 <Button variant="outlined" color="secondary" fullWidth={!matchDownSM} startIcon={<img src={Twitter} alt="Twitter" />}>
                     {!matchDownSM && 'Twitter'}
                 </Button>
-            </GitHubLogin>
+            </GitHubLogin> */}
+            <TwitterLogin authCallback={twitterHandler} consumerKey={CONSUMER_KEY} consumerSecret={CONSUMER_SECRET} />
             <FacebookLogin
                 appId="262990106069627" //APP ID NOT CREATED YET
                 fields="name,email,picture"
