@@ -13,7 +13,7 @@ if (user) {
     switch (user.role) {
         case 1:
             menuItems = {
-                items: [adminmm, dashboard, utilities, support]
+                items: [adminmm, utilities, support]
             };
 
             break;

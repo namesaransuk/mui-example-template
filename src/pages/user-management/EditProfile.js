@@ -17,7 +17,7 @@ import MainCard from 'components/MainCard';
 import ProfileData from './ProfileData';
 // ==============================|| Edit Profile PAGE ||============================== //
 const user = JSON.parse(localStorage.getItem('user'));
-
+console.log(user);
 const EditProfile = () => {
     return (
         <>

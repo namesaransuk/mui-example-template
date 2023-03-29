@@ -75,8 +75,8 @@ const Profile = () => {
                 }).then((value) => {
                     localStorage.removeItem('accessToken');
                     localStorage.removeItem('user');
-                    // navigate('/login');
-                    window.location.reload(false);
+                    navigate('/login');
+                    // window.location.reload(false);
                 });
             }
         });

@@ -3,13 +3,13 @@ import { lazy } from 'react';
 // project import
 import Loadable from 'components/Loadable';
 import MainLayout from 'layout/MainLayout';
+import { Route, Routes, Navigate, Outlet } from 'react-router-dom';
 
 // render - dashboard
 const DashboardDefault = Loadable(lazy(() => import('pages/dashboard')));
 const Customer = Loadable(lazy(() => import('pages/customer')));
 const Product = Loadable(lazy(() => import('pages/product')));
 const Cart = Loadable(lazy(() => import('pages/product/Cart')));
-// const Line = Loadable(lazy(() => import('pages/Line')));
 const Social = Loadable(lazy(() => import('pages/social')));
 const Excel = Loadable(lazy(() => import('pages/excel')));
 const Calendar = Loadable(lazy(() => import('pages/calendar')));
@@ -31,7 +31,12 @@ const AuthLogin = Loadable(lazy(() => import('pages/authentication/Login')));
 // render - EditProfile
 const EditProfile = Loadable(lazy(() => import('pages/user-management/EditProfile')));
 
+// render - NotFound
+const NotFound = Loadable(lazy(() => import('pages/notfound')));
+
 // ==============================|| MAIN ROUTING ||============================== //
+
+const user = JSON.parse(localStorage.getItem('user'));
 
 function hasJWT() {
     let flag = false;
@@ -42,15 +47,57 @@ function hasJWT() {
     return flag;
 }
 
-const MainRoutes = {
-    path: '/',
-    element: hasJWT() ? <MainLayout /> : <AuthLogin />,
+const AdminRoutes = {
     children: [
         {
             path: '/',
+            element: <MainLayout />,
             children: [
                 {
-                    path: '/',
+                    path: 'UsersManagement',
+                    element: <AdminDefault />
+                },
+                {
+                    path: 'sample-page',
+                    element: <SamplePage />
+                },
+                {
+                    path: 'shadow',
+                    element: <Shadow />
+                },
+                {
+                    path: 'typography',
+                    element: <Typography />
+                },
+                {
+                    path: 'color',
+                    element: <Color />
+                },
+                {
+                    path: 'icons/ant',
+                    element: <AntIcons />
+                },
+                {
+                    path: 'EditProfile',
+                    element: <EditProfile />
+                }
+            ]
+        },
+        {
+            path: '*',
+            element: <NotFound />
+        }
+    ]
+};
+
+const UserRoutes = {
+    children: [
+        {
+            path: '/',
+            element: <MainLayout />,
+            children: [
+                {
+                    path: 'dashboard',
                     element: <DashboardDefault />
                 },
                 {
@@ -95,32 +142,42 @@ const MainRoutes = {
                     ]
                 },
                 {
-                    path: 'sample-page',
-                    element: <SamplePage />
-                },
-                {
-                    path: 'shadow',
-                    element: <Shadow />
-                },
-                {
-                    path: 'typography',
-                    element: <Typography />
-                },
-                {
-                    path: 'icons/ant',
-                    element: <AntIcons />
-                },
-                {
                     path: 'EditProfile',
                     element: <EditProfile />
-                },
-                {
-                    path: 'UsersManagement',
-                    element: <AdminDefault />
                 }
             ]
+        },
+        {
+            path: '*',
+            element: <NotFound />
         }
     ]
 };
 
-export default MainRoutes;
+const LoginRoutes = {
+    path: '/',
+    element: <AuthLogin />
+};
+
+const routes = hasJWT() ? (user.role === 1 ? AdminRoutes : UserRoutes) : LoginRoutes;
+
+// const routes = hasJWT() ? (
+//     user.role === 1 ? (
+//         <Routes path="/" element={<MainLayout />}>
+//             {adminRoutes.map((route) => (
+//                 <Route key={route.path} path={route.path} element={route.element} />
+//             ))}
+//         </Routes>
+//     ) : (
+//         <Routes path="/" element={<MainLayout />}>
+//             <Route path="/" element={<DashboardDefault />} />
+//             {userRoutes.map((route) => (
+//                 <Route key={route.path} path={route.path} element={route.element} />
+//             ))}
+//         </Routes>
+//     )
+// ) : (
+//     <Routes path="/" element={<AuthLogin />} />
+// );
+
+export default routes;

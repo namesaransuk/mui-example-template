@@ -91,7 +91,11 @@ const AuthLogin = () => {
                                 localStorage.setItem('accessToken', response.token);
                                 localStorage.setItem('user', JSON.stringify(response.user));
 
-                                window.location.pathname == '/login' ? navigate('/') : window.location.reload(false);
+                                window.location.pathname == '/login'
+                                    ? response.user.role === 1
+                                        ? navigate('/UsersManagement')
+                                        : navigate('/dashboard')
+                                    : window.location.reload(true);
                                 //window.location.reload(false);
                                 console.log(response);
                             });

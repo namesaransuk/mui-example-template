@@ -11,7 +11,7 @@ import Facebook from 'assets/images/icons/facebook.svg';
 
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
 import GoogleLogin from 'react-google-login';
-import GitHubLogin from 'react-github-login';
+// import TwitterLogin from 'react-twitter-login';
 import { gapi } from 'gapi-script';
 
 // ==============================|| FIREBASE - SOCIAL BUTTON ||============================== //
@@ -114,7 +114,7 @@ const FirebaseSocial = () => {
                     {!matchDownSM && 'Twitter'}
                 </Button>
             </GitHubLogin> */}
-            <TwitterLogin authCallback={twitterHandler} consumerKey={CONSUMER_KEY} consumerSecret={CONSUMER_SECRET} />
+            {/* <TwitterLogin authCallback={twitterHandler} consumerKey={CONSUMER_KEY} consumerSecret={CONSUMER_SECRET} /> */}
             <FacebookLogin
                 appId="262990106069627" //APP ID NOT CREATED YET
                 fields="name,email,picture"
