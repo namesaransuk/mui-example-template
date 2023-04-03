@@ -97,7 +97,7 @@ const AuthLogin = () => {
                                         : navigate('/dashboard')
                                     : window.location.reload(true);
                                 //window.location.reload(false);
-                                console.log(response);
+                                // console.log(response);
                             });
                         } else {
                             swal('Failed', response.message, 'error', {

@@ -56,6 +56,7 @@ function Album() {
     useEffect(() => {
         axios
             .get('http://localhost/react-api/product.php')
+            // .post('http://127.0.0.1:8000/api/v1/product/list')
 
             .then((response) => {
                 setProductList(response.data);
